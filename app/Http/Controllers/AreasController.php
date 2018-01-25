@@ -18,10 +18,10 @@ class AreasController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = 25;
+        $perPage = 5;
 
         if (!empty($keyword)) {
-            $areas = Area::paginate($perPage);
+            $areas = Area::where('description', 'LIKE', "%$keyword%")->paginate($perPage);
         } else {
             $areas = Area::paginate($perPage);
         }
@@ -48,12 +48,16 @@ class AreasController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+      
         $requestData = $request->all();
         
         Area::create($requestData);
 
-        return redirect('areas')->with('flash_message', 'Area added!');
+        return redirect('areas')->with('success', 'Area created successfully!');
     }
 
     /**
@@ -94,13 +98,17 @@ class AreasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+      
         $requestData = $request->all();
         
         $area = Area::findOrFail($id);
         $area->update($requestData);
 
-        return redirect('areas')->with('flash_message', 'Area updated!');
+        return redirect('areas')->with('success', 'Area updated successfully!');
     }
 
     /**
@@ -114,6 +122,6 @@ class AreasController extends Controller
     {
         Area::destroy($id);
 
-        return redirect('areas')->with('flash_message', 'Area deleted!');
+        return redirect('areas')->with('success', 'Area deleted successfully!');
     }
 }

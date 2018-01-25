@@ -37,5 +37,5 @@ Route::resource('students', 'StudentsController');
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::resource('areas', 'AreasController');
 });
