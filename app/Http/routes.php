@@ -15,6 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('areas', 'AreasController');
+Route::resource('course_disciplines', 'CourseDisciplinesController');
+Route::resource('courses', 'CoursesController');
+Route::resource('discipline_classes', 'DisciplineClassesController');
+Route::resource('discipline_class_offers', 'DisciplineClassOffersController');
+Route::resource('disciplines', 'DisciplinesController');
+Route::resource('professors', 'ProfessorsController');
+Route::resource('schedules', 'SchedulesController');
+Route::resource('students', 'StudentsController');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
