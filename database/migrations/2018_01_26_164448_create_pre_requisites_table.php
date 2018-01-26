@@ -15,9 +15,8 @@ class CreatePreRequisitesTable extends Migration {
 		Schema::create('pre_requisites', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->integer('pre_discipline_id')->nullable()->index('index_pre_requisites_on_pre_discipline_id');
-			$table->integer('post_discipline_id')->nullable()->index('index_pre_requisites_on_post_discipline_id');
-			$table->timestamps();
+			$table->integer('pre_discipline_id')->index('index_pre_requisites_on_pre_discipline_id');
+			$table->integer('post_discipline_id')->index('index_pre_requisites_on_post_discipline_id');
 		});
 	}
 

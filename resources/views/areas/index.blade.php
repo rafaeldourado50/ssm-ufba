@@ -44,13 +44,14 @@
               <table class="table table-borderless">
                 <thead>
                   <tr>
-                    <th>#</th><th>Name</th><th>Description</th><th>Actions</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th style="width: 150px !important;">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                 @foreach($areas as $item)
                   <tr>
-                    <td>{{ $loop->iteration or $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->description }}</td>
                     <td>

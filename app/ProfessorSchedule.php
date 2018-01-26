@@ -18,7 +18,7 @@ class ProfessorSchedule extends Model
     /**
      * @var array
      */
-    protected $fillable = ['professor_id', 'schedule_id', 'created_at', 'updated_at'];
+    protected $fillable = ['professor_id', 'schedule_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

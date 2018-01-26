@@ -17,8 +17,8 @@ class CreateCourseDisciplinesTable extends Migration {
 			$table->integer('id', true);
 			$table->integer('semester')->nullable();
 			$table->string('nature', 3)->nullable();
-			$table->integer('course_id')->nullable()->index('index_course_disciplines_on_course_id');
-			$table->integer('discipline_id')->nullable()->index('index_course_disciplines_on_discipline_id');
+			$table->integer('course_id')->index('index_course_disciplines_on_course_id');
+			$table->integer('discipline_id')->index('index_course_disciplines_on_discipline_id');
 			$table->timestamps();
 		});
 	}

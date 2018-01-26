@@ -15,9 +15,8 @@ class CreateCourseClassOffersTable extends Migration {
 		Schema::create('course_class_offers', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->integer('course_id')->nullable()->index('index_course_class_offers_on_course_id');
-			$table->integer('discipline_class_offer_id')->nullable()->index('index_course_class_offers_on_discipline_class_offer_id');
-			$table->timestamps();
+			$table->integer('course_id')->index('index_course_class_offers_on_course_id');
+			$table->integer('discipline_class_offer_id')->index('index_course_class_offers_on_discipline_class_offer_id');
 		});
 	}
 

@@ -18,10 +18,10 @@ class CoursesController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = 25;
+        $perPage = 5;
 
         if (!empty($keyword)) {
-            $courses = Course::paginate($perPage);
+            $courses = Course::where('name', 'LIKE', "%$keyword%")->paginate($perPage);
         } else {
             $courses = Course::paginate($perPage);
         }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAreasTable extends Migration {
+class CreateDisciplinesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,13 @@ class CreateAreasTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('areas', function(Blueprint $table)
+		Schema::create('disciplines', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->string('name')->nullable();
-			$table->string('description')->nullable();
+			$table->string('code')->index('index_disciplines_on_code');
+			$table->string('name');
+			$table->string('curriculum')->nullable();
+			$table->integer('load')->nullable();
 			$table->timestamps();
 		});
 	}
@@ -29,7 +31,7 @@ class CreateAreasTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('areas');
+		Schema::drop('disciplines');
 	}
 
 }

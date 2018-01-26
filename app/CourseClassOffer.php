@@ -15,24 +15,24 @@ use Illuminate\Database\Eloquent\Model;
  */
 class CourseClassOffer extends Model
 {
-    /**
-     * @var array
-     */
-    protected $fillable = ['course_id', 'discipline_class_offer_id', 'created_at', 'updated_at'];
+  /**
+   * @var array
+   */
+  protected $fillable = ['course_id', 'discipline_class_offer_id'];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function course()
-    {
-        return $this->belongsTo('App\Course');
-    }
+  /**
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function course()
+  {
+    return $this->belongsTo('App\Course');
+  }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function disciplineClassOffer()
-    {
-        return $this->belongsTo('App\DisciplineClassOffer');
-    }
+  /**
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function disciplineClassOffer()
+  {
+    return $this->belongsTo('App\DisciplineClassOffer');
+  }
 }

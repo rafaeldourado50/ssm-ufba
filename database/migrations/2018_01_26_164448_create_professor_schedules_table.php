@@ -15,9 +15,8 @@ class CreateProfessorSchedulesTable extends Migration {
 		Schema::create('professor_schedules', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->integer('schedule_id')->nullable()->index('index_professor_schedules_on_schedule_id');
-			$table->integer('professor_id')->nullable()->index('index_professor_schedules_on_professor_id');
-			$table->timestamps();
+			$table->integer('schedule_id')->index('index_professor_schedules_on_schedule_id');
+			$table->integer('professor_id')->index('index_professor_schedules_on_professor_id');
 		});
 	}
 

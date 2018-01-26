@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
 
 Route::resource('areas', 'AreasController');
@@ -37,5 +37,6 @@ Route::resource('students', 'StudentsController');
 */
 
 Route::group(['middleware' => ['web']], function () {
-    Route::resource('areas', 'AreasController');
+  Route::resource('areas', 'AreasController');
+  Route::resource('courses', 'CoursesController');
 });

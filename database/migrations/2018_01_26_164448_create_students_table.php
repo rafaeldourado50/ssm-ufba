@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration {
 			$table->string('name');
 			$table->string('password')->nullable();
 			$table->string('email');
-			$table->integer('enrollment');
+			$table->integer('enrollment')->unique('enrollment_unique');
 			$table->integer('course_id')->index('index_students_on_course_id');
 			$table->timestamps();
 		});

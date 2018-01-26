@@ -18,7 +18,7 @@ class PreRequisite extends Model
     /**
      * @var array
      */
-    protected $fillable = ['pre_discipline_id', 'post_discipline_id', 'created_at', 'updated_at'];
+    protected $fillable = ['pre_discipline_id', 'post_discipline_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
