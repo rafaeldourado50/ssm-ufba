@@ -23,7 +23,7 @@
 
             <form method="GET" action="{{ url('/courses') }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
               <div class="input-group">
-                <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
+                <input type="text" class="form-control" name="name" placeholder="Search by name..." value="{{ request('name') }}">
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="submit">
                     <i class="fa fa-search"></i>
@@ -53,24 +53,24 @@
                 <tbody>
                 @foreach($courses as $item)
                   <tr>
-                    <td>{{ $item->name }}</td>
+                    <td>{{ strlen($item->name) > 40 ? substr($item->name, 0, 40) . '...' : $item->name }}</td>
                     <td>{{ $item->code }}</td>
                     <td>{{ $item->curriculum }}</td>
                     <td>
-                      <a href="{{ url('/courses/' . $item->id) }}" title="View course"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> </button></a>
-                      <a href="{{ url('/courses/' . $item->id . '/edit') }}" title="Edit course"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
+                      <a href="{{ url('/courses/' . $item->id) }}" title="Show Course"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> </button></a>
+                      <a href="{{ url('/courses/' . $item->id . '/edit') }}" title="Edit Course"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
 
                       <form method="POST" action="{{ url('/courses' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-danger btn-sm" title="Delete course" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> </button>
+                        <button type="submit" class="btn btn-danger btn-sm" title="Delete Course" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> </button>
                       </form>
                     </td>
                   </tr>
                 @endforeach
                 </tbody>
               </table>
-              <div class="pagination-wrapper"> {!! $courses->appends(['search' => Request::get('search')])->render() !!} </div>
+              <div class="pagination-wrapper"> {!! $courses->appends(['name' => Request::get('name')])->render() !!} </div>
             </div>
           </div>
         </div>
