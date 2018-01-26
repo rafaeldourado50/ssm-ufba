@@ -34,6 +34,7 @@
 
               @include ('areas.form')
             </form>
+            
           </div>
         </div>
       </div>

@@ -10,118 +10,118 @@ use Illuminate\Http\Request;
 
 class AreasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index(Request $request)
-    {
-        $keyword = $request->get('search');
-        $perPage = 5;
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\View\View
+   */
+  public function index(Request $request)
+  {
+    $keyword = $request->get('description');
+    $perPage = 5;
 
-        if (!empty($keyword)) {
-            $areas = Area::where('description', 'LIKE', "%$keyword%")->paginate($perPage);
-        } else {
-            $areas = Area::paginate($perPage);
-        }
-
-        return view('areas.index', compact('areas'));
+    if (!empty($keyword)) {
+        $areas = Area::where('description', 'LIKE', "%$keyword%")->paginate($perPage);
+    } else {
+        $areas = Area::paginate($perPage);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('areas.create');
-    }
+    return view('areas.index', compact('areas'));
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'name' => 'required',
-            'description' => 'required',
-        ]);
-      
-        $requestData = $request->all();
-        
-        Area::create($requestData);
+  /**
+   * Show the form for creating a new resource.
+   *
+   * @return \Illuminate\View\View
+   */
+  public function create()
+  {
+    return view('areas.create');
+  }
 
-        return redirect('areas')->with('success', 'Area created successfully!');
-    }
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param \Illuminate\Http\Request $request
+   *
+   * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+   */
+  public function store(Request $request)
+  {
+    $this->validate($request, [
+        'name' => 'required',
+        'description' => 'required',
+    ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\View\View
-     */
-    public function show($id)
-    {
-        $area = Area::findOrFail($id);
+    $requestData = $request->all();
 
-        return view('areas.show', compact('area'));
-    }
+    Area::create($requestData);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\View\View
-     */
-    public function edit($id)
-    {
-        $area = Area::findOrFail($id);
+    return redirect('areas')->with('success', 'Area created successfully!');
+  }
 
-        return view('areas.edit', compact('area'));
-    }
+  /**
+   * Display the specified resource.
+   *
+   * @param  int  $id
+   *
+   * @return \Illuminate\View\View
+   */
+  public function show($id)
+  {
+    $area = Area::findOrFail($id);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param  int  $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function update(Request $request, $id)
-    {
-        $this->validate($request, [
-            'name' => 'required',
-            'description' => 'required',
-        ]);
-      
-        $requestData = $request->all();
-        
-        $area = Area::findOrFail($id);
-        $area->update($requestData);
+    return view('areas.show', compact('area'));
+  }
 
-        return redirect('areas')->with('success', 'Area updated successfully!');
-    }
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  int  $id
+   *
+   * @return \Illuminate\View\View
+   */
+  public function edit($id)
+  {
+    $area = Area::findOrFail($id);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function destroy($id)
-    {
-        Area::destroy($id);
+    return view('areas.edit', compact('area'));
+  }
 
-        return redirect('areas')->with('success', 'Area deleted successfully!');
-    }
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param \Illuminate\Http\Request $request
+   * @param  int  $id
+   *
+   * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+   */
+  public function update(Request $request, $id)
+  {
+    $this->validate($request, [
+        'name' => 'required',
+        'description' => 'required',
+    ]);
+
+    $requestData = $request->all();
+
+    $area = Area::findOrFail($id);
+    $area->update($requestData);
+
+    return redirect('areas')->with('success', 'Area updated successfully!');
+  }
+
+  /**
+   * Remove the specified resource from storage.
+   *
+   * @param  int  $id
+   *
+   * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+   */
+  public function destroy($id)
+  {
+    Area::destroy($id);
+
+    return redirect('areas')->with('success', 'Area deleted successfully!');
+  }
 }

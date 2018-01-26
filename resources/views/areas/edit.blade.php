@@ -35,6 +35,7 @@
 
               @include ('areas.form', ['submitButtonText' => 'Update'])
             </form>
+            
           </div>
         </div>
       </div>

@@ -23,7 +23,7 @@
 
             <form method="GET" action="{{ url('/areas') }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
               <div class="input-group">
-                <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
+                <input type="text" class="form-control" name="description" placeholder="Search by description..." value="{{ request('description') }}">
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="submit">
                     <i class="fa fa-search"></i>
@@ -68,7 +68,7 @@
                 @endforeach
                 </tbody>
               </table>
-              <div class="pagination-wrapper"> {!! $areas->appends(['search' => Request::get('search')])->render() !!} </div>
+              <div class="pagination-wrapper"> {!! $areas->appends(['description' => Request::get('description')])->render() !!} </div>
             </div>
           </div>
         </div>
