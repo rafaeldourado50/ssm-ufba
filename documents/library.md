@@ -1,4 +1,7 @@
-## Guia de bibliotecas utilizadas para geração de código
+---
+layout: page
+title: "Guia de bibliotecas utilizadas para geração de código"
+---
 
 ### Gerador de migrations
 

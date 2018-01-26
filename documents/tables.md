@@ -1,4 +1,7 @@
-## Quais são as tabelas e suas colunas
+---
+layout: page
+title: "Quais são as tabelas e suas colunas"
+---
 
 ### disciplinas_cursadas
 
@@ -101,6 +104,7 @@
 **Descrição:** Armazena as relações entre as tabelas horário e professor.  
 **Colunas:**
 * `id`
+
 * `schedule_id`
 * `professor_id`
 
