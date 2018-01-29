@@ -56,7 +56,7 @@ class ProfessorsController extends Controller
 
     Professor::create($requestData);
 
-    return redirect('professors')->with('success', 'Professor added successfully!');
+    return redirect('professors')->with('success', 'Professor created successfully!');
   }
 
   /**
