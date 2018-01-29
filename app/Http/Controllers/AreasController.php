@@ -21,9 +21,9 @@ class AreasController extends Controller
     $perPage = 5;
 
     if (!empty($keyword)) {
-        $areas = Area::where('description', 'LIKE', "%$keyword%")->orderBy('description')->paginate($perPage);
+        $areas = Area::where('description', 'LIKE', "%$keyword%")->orderBy('name')->paginate($perPage);
     } else {
-        $areas = Area::orderBy('description')->paginate($perPage);
+        $areas = Area::orderBy('name')->paginate($perPage);
     }
 
     return view('areas.index', compact('areas'));
