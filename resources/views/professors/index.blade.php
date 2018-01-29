@@ -3,9 +3,9 @@
 @section('content')
   <div class="container">
     <div class="row">
-      @include('admin.sidebar')
+      @include('admin.menu')
 
-      <div class="col-md-9">
+      <div class="col-md-12">
         <div class="panel panel-default">
           
           <div class="panel-heading">
