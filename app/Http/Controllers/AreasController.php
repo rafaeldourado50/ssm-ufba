@@ -21,9 +21,9 @@ class AreasController extends Controller
     $perPage = 5;
 
     if (!empty($keyword)) {
-        $areas = Area::where('description', 'LIKE', "%$keyword%")->paginate($perPage);
+        $areas = Area::where('description', 'LIKE', "%$keyword%")->orderBy('description')->paginate($perPage);
     } else {
-        $areas = Area::paginate($perPage);
+        $areas = Area::orderBy('description')->paginate($perPage);
     }
 
     return view('areas.index', compact('areas'));
@@ -49,8 +49,8 @@ class AreasController extends Controller
   public function store(Request $request)
   {
     $this->validate($request, [
-        'name' => 'required',
-        'description' => 'required',
+      'name' => 'required',
+      'description' => 'required',
     ]);
 
     $requestData = $request->all();
@@ -99,8 +99,8 @@ class AreasController extends Controller
   public function update(Request $request, $id)
   {
     $this->validate($request, [
-        'name' => 'required',
-        'description' => 'required',
+      'name' => 'required',
+      'description' => 'required',
     ]);
 
     $requestData = $request->all();
