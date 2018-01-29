@@ -22,9 +22,9 @@ class CoursesController extends Controller
     $perPage = 5;
 
     if (!empty($keyword)) {
-        $courses = Course::where('name', 'LIKE', "%$keyword%")->paginate($perPage);
+        $courses = Course::where('name', 'LIKE', "%$keyword%")->orderBy('name')->paginate($perPage);
     } else {
-        $courses = Course::paginate($perPage);
+        $courses = Course::orderBy('name')->paginate($perPage);
     }
 
     return view('courses.index', compact('courses'));
@@ -52,8 +52,8 @@ class CoursesController extends Controller
   public function store(Request $request)
   {
     $this->validate($request, [
-        'name' => 'required',
-        'code' => 'required',
+      'name' => 'required',
+      'code' => 'required',
     ]);
 
     $requestData = $request->all();
@@ -104,8 +104,8 @@ class CoursesController extends Controller
   public function update(Request $request, $id)
   {
     $this->validate($request, [
-        'name' => 'required',
-        'code' => 'required',
+      'name' => 'required',
+      'code' => 'required',
     ]);
 
     $requestData = $request->all();
