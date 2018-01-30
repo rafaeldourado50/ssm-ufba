@@ -9,7 +9,7 @@ Servidor MySQL rodando; Online / Hot; Full;
 
 ### Justificativa:
 
-Nossa base não é muito pesada. Temos apenas 13 tabelas. O backup completo, com a estrutura e a carga dos dados têm, atualmente, algo em torno de 3,3 mb. Via MySQL Workbench, a exportação dos dados leva menos de 5 segundos. Além disso, os comandos para gerar esse tipo de backup são mais simples.
+Nossa base não é muito pesada. Temos apenas 13 tabelas. O backup completo, com a estrutura e a carga dos dados, tem atualmente algo em torno de 3,3 MB. Via o MySQL Workbench, a exportação dos dados leva menos de 5 segundos. Além disso, os comandos para gerar esse tipo de backup são mais simples, como podemos conferir a seguir.
 
 ### Comandos e parâmetros utilizados para a criação do agendamento no servidor de produção:
 
@@ -51,6 +51,6 @@ sudo crontab -l
 
 O comando `sudo crontab -l` irá exibir toda a informação contida no arquivo `crontab` do usuário `root`.  
 
-Fontes:  
+#### Fontes:  
 <https://www.backuphowto.info/how-backup-mysql-database-automatically-linux-users>  
 <https://corenominal.org/2016/05/12/howto-setup-a-crontab-file/>
