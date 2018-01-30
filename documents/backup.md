@@ -13,7 +13,7 @@ Nossa base não é muito pesada. Temos apenas 13 tabelas. O backup completo, com
 
 ### Comandos e parâmetros utilizados para a criação do agendamento no servidor de produção:
 
-Utilizando `cron` e `mysqldump` em um sistema Unix/Linux, podemos criar backups da base automaticamente, agendando um comando ou serviço.  
+Utilizando a ferramenta `cron` e o comando `mysqldump` em um sistema Unix/Linux, podemos criar backups da base automaticamente, agendando uma rotina ou serviço.  
 
 O `cron` é uma ferramenta baseada no tempo para agendamento de uma ação ou comando. Basta que o computador/servidor esteja ligado para que o comando seja executado no período indicado.  
 
@@ -27,7 +27,7 @@ O comando `sudo crontab -e` vai abrir o `crontab` associado ao usuário `root` p
 
 No arquivo `crontab` criado, serão exibidas algumas informações (em linhas comentadas utilizando o símbolo `#`) orientando o usuário acerca do funcionamento da ferramenta.  
 
-Numa nova linha, adicionamos a linha:  
+Numa nova linha do arquivo, adicionamos o seguinte comando:  
 
 ```bash
 30 2 * * * mysqldump -u root -pPASSWORD ssmdb | gzip > /mnt/dumps/ssm_database_`date '+\%Y-\%m-\%d'`.sql.gz
