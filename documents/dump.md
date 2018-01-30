@@ -1,7 +1,9 @@
 ---
 layout: page
-title: "Gerando o dump do banco de dados MySQL"
+title: "From MeuHorario To SSM"
 ---
+
+## Gerando o dump do banco de dados MySQL
 
 Aqui estão descritos os passos para gerar o dump do banco de dados MySQL para o Sistema de Sugestão de Matrícula utilizando as ferramentas disponíveis no projeto do MeuHorario 2:
 

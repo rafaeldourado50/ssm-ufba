@@ -1,7 +1,9 @@
 ---
 layout: page
-title: "Quais são as tabelas e suas colunas"
+title: "Tabelas e colunas"
 ---
+
+## Quais são as tabelas mapeadas, o que representam e quais são suas respectivas colunas
 
 ### disciplinas_cursadas
 

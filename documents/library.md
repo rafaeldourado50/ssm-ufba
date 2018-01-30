@@ -1,7 +1,9 @@
 ---
 layout: page
-title: "Guia de bibliotecas utilizadas para geração de código"
+title: "Biblioteca utilizada"
 ---
+
+## Guia de bibliotecas utilizadas para geração de código
 
 ### Gerador de migrations
 
