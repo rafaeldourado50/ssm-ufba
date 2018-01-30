@@ -33,4 +33,6 @@ Para exportar todos os bancos de dados em um dump:
 mysqldump -u username -p --all-databases > all_databases_export.sql
 ```
 
-Traduzido do <https://coolestguidesontheplanet.com/import-export-mysql-database-command-line/>
+Fontes:  
+<https://coolestguidesontheplanet.com/import-export-mysql-database-command-line/>  
+<http://www.bosontreinamentos.com.br/mysql/mysql-mysqldump-backup-e-restauracao-do-banco-de-dados-25/>

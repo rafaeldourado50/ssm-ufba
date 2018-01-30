@@ -50,3 +50,7 @@ sudo crontab -l
 ```
 
 O comando `sudo crontab -l` irá exibir toda a informação contida no arquivo `crontab` do usuário `root`.  
+
+Fontes:  
+<https://www.backuphowto.info/how-backup-mysql-database-automatically-linux-users>  
+<https://corenominal.org/2016/05/12/howto-setup-a-crontab-file/>
