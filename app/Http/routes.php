@@ -11,16 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-});
 
-Route::resource('areas', 'AreasController');
-Route::resource('courses', 'CoursesController');
-Route::resource('disciplines', 'DisciplinesController');
-Route::resource('professors', 'ProfessorsController');
-Route::resource('schedules', 'SchedulesController');
-Route::resource('students', 'StudentsController');
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +30,12 @@ Route::group(['middleware' => ['web']], function () {
   Route::resource('disciplines', 'DisciplinesController');
   Route::resource('professors', 'ProfessorsController');
   Route::resource('students', 'StudentsController');
+  
+  Route::get('/', function () {
+    return view('welcome');
+  });
+
+  Route::auth();
+
+  Route::get('/home', 'HomeController@index');
 });
