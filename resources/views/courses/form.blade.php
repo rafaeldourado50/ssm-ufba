@@ -2,7 +2,6 @@
   <label for="name" class="col-md-4 control-label">{{ 'Name' }}</label>
   <div class="col-md-12">
     <input class="form-control" name="name" type="text" id="name" value="{{ $course->name or ''}}" >
-    {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
   </div>
 </div>
 
@@ -10,7 +9,6 @@
   <label for="code" class="col-md-4 control-label">{{ 'Code' }}</label>
   <div class="col-md-12">
     <input class="form-control" name="code" type="number" id="code" value="{{ $course->code or ''}}" min="0" max="999999" >
-    {!! $errors->first('code', '<p class="help-block">:message</p>') !!}
   </div>
 </div>
 
@@ -31,5 +29,5 @@
 <br />
 
 <div class="form-group">
-  <input class="btn btn-primary" type="submit" value="{{ $submitButtonText or 'Create' }}">
+  <input class="btn btn-primary" type="submit" value="{{ $submitButtonText }}">
 </div>

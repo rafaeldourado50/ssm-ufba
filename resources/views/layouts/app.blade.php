@@ -6,7 +6,7 @@
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
-  <div class="container">
+  <div class="container-fluid">
     @yield('content')
   </div>
   </body>

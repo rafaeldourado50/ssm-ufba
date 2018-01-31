@@ -16,10 +16,7 @@ Route::get('/', function () {
 });
 
 Route::resource('areas', 'AreasController');
-Route::resource('course_disciplines', 'CourseDisciplinesController');
 Route::resource('courses', 'CoursesController');
-Route::resource('discipline_classes', 'DisciplineClassesController');
-Route::resource('discipline_class_offers', 'DisciplineClassOffersController');
 Route::resource('disciplines', 'DisciplinesController');
 Route::resource('professors', 'ProfessorsController');
 Route::resource('schedules', 'SchedulesController');
@@ -39,6 +36,7 @@ Route::resource('students', 'StudentsController');
 Route::group(['middleware' => ['web']], function () {
   Route::resource('areas', 'AreasController');
   Route::resource('courses', 'CoursesController');
-  Route::resource('professors', 'ProfessorsController');
   Route::resource('disciplines', 'DisciplinesController');
+  Route::resource('professors', 'ProfessorsController');
+  Route::resource('students', 'StudentsController');
 });
