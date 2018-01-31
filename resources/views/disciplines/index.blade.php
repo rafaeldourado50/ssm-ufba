@@ -2,36 +2,24 @@
 
 @section('content')
   <div class="row">
-    @include('admin.menu')
-
     <div class="col-md-12">
       <div class="panel panel-default">
-
-        <div class="panel-heading">
-          <div class="pull-left"><h2>Search Disciplines</h2></div>
-          <div class="pull-right">
-            <a href="{{ url('/disciplines/create') }}" class="btn btn-success btn-xs" title="Add New Discipline">
-              <i class="fa fa-plus" aria-hidden="true"></i> New
-            </a>
-          </div>
-        </div>
-
+        <div class="panel-heading">Disciplines</div>
         <div class="panel-body">
-          <br/>
-          <br/>
-
-          <form method="GET" action="{{ url('/disciplines') }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
-            <div class="input-group">
-              <input type="text" class="form-control" name="code" placeholder="Search by code..." value="{{ request('code') }}">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </form>
 
           @include('admin.info')
+
+          <form method="GET" action="{{ url('/disciplines') }}" accept-charset="UTF-8" style="display:inline" role="search">
+            <input type="text" class="form-control" name="code" placeholder="Search by code..." value="{{ request('code') }}">
+
+            <button type="submit" class="btn btn-success" title="Search Disciplines" style="margin-top: 6px;">
+              <i class="fa fa-search" aria-hidden="true"></i> Search
+            </button>
+
+            <a href="{{ url('/disciplines/create') }}" class="btn btn-success" title="Add New Discipline" style="margin-top: 6px;">
+              <i class="fa fa-plus" aria-hidden="true"></i> New
+            </a>
+          </form>
 
           <div class="table-responsive">
             <table class="table table-borderless">

@@ -2,36 +2,24 @@
 
 @section('content')
   <div class="row">
-    @include('admin.menu')
-
     <div class="col-md-12">
       <div class="panel panel-default">
-
-        <div class="panel-heading">
-          <div class="pull-left"><h2>Search Areas</h2></div>
-          <div class="pull-right">
-            <a href="{{ url('/areas/create') }}" class="btn btn-success btn-xs" title="Add New Area">
-              <i class="fa fa-plus" aria-hidden="true"></i> New
-            </a>
-          </div>
-        </div>
-
+        <div class="panel-heading">Areas</div>
         <div class="panel-body">
-          <br/>
-          <br/>
-
-          <form method="GET" action="{{ url('/areas') }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
-            <div class="input-group">
-              <input type="text" class="form-control" name="description" placeholder="Search by description..." value="{{ request('description') }}">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </form>
 
           @include('admin.info')
+
+          <form method="GET" action="{{ url('/areas') }}" accept-charset="UTF-8" style="display:inline" role="search">
+            <input type="text" class="form-control" name="description" placeholder="Search by description..." value="{{ request('description') }}">
+
+            <button type="submit" class="btn btn-success" title="Search Areas" style="margin-top: 6px;">
+              <i class="fa fa-search" aria-hidden="true"></i> Search
+            </button>
+
+            <a href="{{ url('/areas/create') }}" class="btn btn-success" title="Add New Area" style="margin-top: 6px;">
+              <i class="fa fa-plus" aria-hidden="true"></i> New
+            </a>
+          </form>
 
           <div class="table-responsive">
             <table class="table table-borderless">
