@@ -12,11 +12,11 @@
           <form method="GET" action="{{ url('/areas') }}" accept-charset="UTF-8" style="display:inline" role="search">
             <input type="text" class="form-control" name="description" placeholder="Search by description..." value="{{ request('description') }}">
 
-            <button type="submit" class="btn btn-success" title="Search Areas" style="margin-top: 6px;">
+            <button type="submit" class="btn btn-success" style="margin-top: 6px;">
               <i class="fa fa-search" aria-hidden="true"></i> Search
             </button>
 
-            <a href="{{ url('/areas/create') }}" class="btn btn-success" title="Add New Area" style="margin-top: 6px;">
+            <a href="{{ url('/areas/create') }}" class="btn btn-success" style="margin-top: 6px;">
               <i class="fa fa-plus" aria-hidden="true"></i> New
             </a>
           </form>
@@ -36,13 +36,13 @@
                   <td>{{ $item->name }}</td>
                   <td>{{ $item->description }}</td>
                   <td>
-                    <a href="{{ url('/areas/' . $item->id) }}" title="Show Area"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
-                    <a href="{{ url('/areas/' . $item->id . '/edit') }}" title="Edit Area"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+                    <a href="{{ url('/areas/' . $item->id) }}" title="Show"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
+                    <a href="{{ url('/areas/' . $item->id . '/edit') }}" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
 
                     <form method="POST" action="{{ url('/areas' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                       {{ method_field('DELETE') }}
                       {{ csrf_field() }}
-                      <button type="submit" class="btn btn-danger btn-sm" title="Delete Area" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                      <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                     </form>
                   </td>
                 </tr>

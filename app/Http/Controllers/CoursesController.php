@@ -2,15 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Area;
+use App\Course;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Area;
-use App\Course;
 use Illuminate\Http\Request;
 
 class CoursesController extends Controller
 {
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
   /**
    * Display a listing of the resource.
    *

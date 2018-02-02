@@ -161,6 +161,8 @@ return [
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
         Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Spatie\Authorize\AuthorizeServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
     ],
 

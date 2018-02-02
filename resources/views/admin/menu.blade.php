@@ -1,9 +1,27 @@
-<li><a href="{{ url('/areas') }}">Areas</a></li>
-<li><a href="{{ url('/courses') }}">Courses</a></li>
-<!-- <li><a href="{{ url('/course_disciplines') }}"><i class="fa fa-bar-chart-o fa-fw"></i>Course Disciplines</a></li> -->
-<li><a href="{{ url('/disciplines') }}">Disciplines</a></li>
-<!-- <li><a href="{{ url('/discipline_class_offers') }}"><i class="fa fa-tasks fa-fw"></i>Discipline Class Offers</a></li> -->
-<!-- <li><a href="{{ url('/discipline_classes') }}"><i class="fa fa-table fa-fw"></i>Discipline Classes</a></li> -->
-<li><a href="{{ url('/professors') }}">Professors</a></li>
-<!-- <li><a href="{{ url('/schedules') }}"><i class="fa fa-calendar fa-fw"></i>Schedules</a></li> -->
-<li><a href="{{ url('/students') }}">Students</a></li>
+@if (Auth::user()->hasPermissionTo('list areas'))
+  <li><a href="{{ url('/areas') }}">Areas</a></li>
+@endif
+
+@if (Auth::user()->hasPermissionTo('list courses'))
+  <li><a href="{{ url('/courses') }}">Courses</a></li>
+@endif
+
+@if (Auth::user()->hasPermissionTo('list disciplines'))
+  <li><a href="{{ url('/disciplines') }}">Disciplines</a></li>
+@endif
+
+@if (Auth::user()->hasPermissionTo('list professors'))
+  <li><a href="{{ url('/professors') }}">Professors</a></li>
+@endif
+
+@if (Auth::user()->hasRole('admin'))
+  <li><a href="{{ url('/users') }}">Users</a></li>
+@endif
+
+@if (Auth::user()->hasRole('admin'))
+  <li><a href="{{ url('/roles') }}">Roles</a></li>
+@endif
+
+@if (Auth::user()->hasRole('admin'))
+  <li><a href="{{ url('/permissions') }}">Permissions</a></li>
+@endif

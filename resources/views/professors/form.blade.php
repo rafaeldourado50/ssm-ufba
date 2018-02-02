@@ -13,8 +13,8 @@
     </button>
   </div>
   <div class="pull-right">
-    <a href="{{ url('/professors') }}" class="btn btn-warning" title="Back">
-      <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
+    <a href="{{ url('/professors') }}" class="btn btn-danger">
+      <i class="fa fa-ban" aria-hidden="true"></i> Cancel
     </a>
   </div>
 </div>

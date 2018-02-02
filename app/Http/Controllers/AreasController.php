@@ -2,14 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Area;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Area;
+use Auth;
+
 use Illuminate\Http\Request;
 
 class AreasController extends Controller
 {
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
   /**
    * Display a listing of the resource.
    *
@@ -17,16 +29,23 @@ class AreasController extends Controller
    */
   public function index(Request $request)
   {
-    $keyword = $request->get('description');
-    $perPage = 5;
+    $user = Auth::user();
 
-    if (!empty($keyword)) {
-        $areas = Area::where('description', 'LIKE', "%$keyword%")->orderBy('name')->paginate($perPage);
+    if ($user->hasPermissionTo('list areas')) {
+
+      $keyword = $request->get('description');
+      $perPage = 5;
+
+      if (!empty($keyword)) {
+          $areas = Area::where('description', 'LIKE', "%$keyword%")->orderBy('name')->paginate($perPage);
+      } else {
+          $areas = Area::orderBy('name')->paginate($perPage);
+      }
+
+      return view('areas.index', compact('areas'));  
     } else {
-        $areas = Area::orderBy('name')->paginate($perPage);
+      return view('errors.forbidden');
     }
-
-    return view('areas.index', compact('areas'));
   }
 
   /**
@@ -36,7 +55,14 @@ class AreasController extends Controller
    */
   public function create()
   {
-    return view('areas.create');
+    $user = Auth::user();
+
+    if ($user->hasPermissionTo('edit area')) {
+
+      return view('areas.create');
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**
@@ -69,9 +95,16 @@ class AreasController extends Controller
    */
   public function show($id)
   {
-    $area = Area::findOrFail($id);
+    $user = Auth::user();
 
-    return view('areas.show', compact('area'));
+    if ($user->hasPermissionTo('list areas')) {
+
+      $area = Area::findOrFail($id);
+
+      return view('areas.show', compact('area'));
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**
@@ -83,9 +116,17 @@ class AreasController extends Controller
    */
   public function edit($id)
   {
-    $area = Area::findOrFail($id);
+    $user = Auth::user();
 
-    return view('areas.edit', compact('area'));
+    if ($user->hasPermissionTo('edit area')) {
+
+      $area = Area::findOrFail($id);
+
+      return view('areas.edit', compact('area'));
+    } else {
+
+      return view('errors.forbidden');
+    }
   }
 
   /**

@@ -12,11 +12,11 @@
           <form method="GET" action="{{ url('/professors') }}" accept-charset="UTF-8" style="display:inline" role="search">
             <input type="text" class="form-control" name="name" placeholder="Search by name..." value="{{ request('name') }}">
 
-            <button type="submit" class="btn btn-success" title="Search Professors" style="margin-top: 6px;">
+            <button type="submit" class="btn btn-success" style="margin-top: 6px;">
               <i class="fa fa-search" aria-hidden="true"></i> Search
             </button>
 
-            <a href="{{ url('/professors/create') }}" class="btn btn-success" title="Add New Professor" style="margin-top: 6px;">
+            <a href="{{ url('/professors/create') }}" class="btn btn-success" style="margin-top: 6px;">
               <i class="fa fa-plus" aria-hidden="true"></i> New
             </a>
           </form>
@@ -34,13 +34,13 @@
                 <tr>
                   <td>{{ $item->name }}</td>
                   <td>
-                    <a href="{{ url('/professors/' . $item->id) }}" title="Show Professor"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> </button></a>
-                    <a href="{{ url('/professors/' . $item->id . '/edit') }}" title="Edit Professor"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
+                    <a href="{{ url('/professors/' . $item->id) }}" title="Show"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> </button></a>
+                    <a href="{{ url('/professors/' . $item->id . '/edit') }}" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
 
                     <form method="POST" action="{{ url('/professors' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                       {{ method_field('DELETE') }}
                       {{ csrf_field() }}
-                      <button type="submit" class="btn btn-danger btn-sm" title="Delete Professor" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> </button>
+                      <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> </button>
                     </form>
                   </td>
                 </tr>
