@@ -5,11 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property ProfessorSchedule[] $professorSchedules
- * @property int $id
- * @property string $name
- * @property string $created_at
- * @property string $updated_at
+ * 
  */
 class Professor extends Model
 {

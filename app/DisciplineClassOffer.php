@@ -5,13 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property DisciplineClass $disciplineClass
- * @property CourseClassOffer[] $courseClassOffers
- * @property int $id
- * @property int $discipline_class_id
- * @property int $vacancies
- * @property string $created_at
- * @property string $updated_at
+ * 
  */
 class DisciplineClassOffer extends Model
 {
