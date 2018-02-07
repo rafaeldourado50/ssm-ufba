@@ -14,7 +14,7 @@ class AddForeignKeysToDisciplineClassOffersTable extends Migration {
 	{
 		Schema::table('discipline_class_offers', function(Blueprint $table)
 		{
-			$table->foreign('discipline_class_id', 'fk_discipline_classes_discipline_class_offers')->references('id')->on('discipline_classes')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('discipline_class_id', 'fk_discipline_class_offers_discipline_class_id')->references('id')->on('discipline_classes')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -28,7 +28,7 @@ class AddForeignKeysToDisciplineClassOffersTable extends Migration {
 	{
 		Schema::table('discipline_class_offers', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_discipline_classes_discipline_class_offers');
+			$table->dropForeign('fk_discipline_class_offers_discipline_class_id');
 		});
 	}
 

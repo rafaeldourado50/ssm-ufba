@@ -14,8 +14,8 @@ class AddForeignKeysToAchievedDisciplinesTable extends Migration {
 	{
 		Schema::table('achieved_disciplines', function(Blueprint $table)
 		{
-			$table->foreign('discipline_id', 'fk_disciplines_achieved_disciplines')->references('id')->on('disciplines')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('student_id', 'fk_students_achieved_disciplines')->references('id')->on('students')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('discipline_id', 'fk_achieved_disciplines_discipline_id')->references('id')->on('disciplines')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('student_id', 'fk_achieved_disciplines_student_id')->references('id')->on('students')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToAchievedDisciplinesTable extends Migration {
 	{
 		Schema::table('achieved_disciplines', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_disciplines_achieved_disciplines');
-			$table->dropForeign('fk_students_achieved_disciplines');
+			$table->dropForeign('fk_achieved_disciplines_discipline_id');
+			$table->dropForeign('fk_achieved_disciplines_student_id');
 		});
 	}
 

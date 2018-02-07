@@ -18,7 +18,7 @@ class CreateSchedulesTable extends Migration {
 			$table->integer('day')->nullable();
 			$table->integer('start_hour')->nullable();
 			$table->integer('start_minute')->nullable();
-			$table->integer('discipline_class_id')->index('index_schedules_on_discipline_class_id');
+			$table->integer('discipline_class_id')->index('fk_schedules_discipline_class_id');
 			$table->integer('end_hour')->nullable();
 			$table->integer('end_minute')->nullable();
 			$table->integer('first_class_number')->nullable();

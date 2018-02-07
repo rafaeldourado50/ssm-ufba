@@ -14,8 +14,8 @@ class AddForeignKeysToPreRequisitesTable extends Migration {
 	{
 		Schema::table('pre_requisites', function(Blueprint $table)
 		{
-			$table->foreign('pre_discipline_id', 'fk_course_disciplines_pre_requisites')->references('id')->on('course_disciplines')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-			$table->foreign('post_discipline_id', 'fk_course_disciplines_pre_requisites_2')->references('id')->on('course_disciplines')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('post_discipline_id', 'fk_pre_requisites_post_discipline_id')->references('id')->on('course_disciplines')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('pre_discipline_id', 'fk_pre_requisites_pre_discipline_id')->references('id')->on('course_disciplines')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToPreRequisitesTable extends Migration {
 	{
 		Schema::table('pre_requisites', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_course_disciplines_pre_requisites');
-			$table->dropForeign('fk_course_disciplines_pre_requisites_2');
+			$table->dropForeign('fk_pre_requisites_post_discipline_id');
+			$table->dropForeign('fk_pre_requisites_pre_discipline_id');
 		});
 	}
 

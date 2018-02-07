@@ -15,8 +15,8 @@ class CreateAchievedDisciplinesTable extends Migration {
 		Schema::create('achieved_disciplines', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->integer('student_id')->index('index_achieved_disciplines_on_student_id');
-			$table->integer('discipline_id')->index('index_achieved_disciplines_on_discipline_id');
+			$table->integer('student_id')->index('fk_achieved_disciplines_student_id');
+			$table->integer('discipline_id')->index('fk_achieved_disciplines_discipline_id');
 		});
 	}
 

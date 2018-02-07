@@ -14,7 +14,7 @@ class AddForeignKeysToSchedulesTable extends Migration {
 	{
 		Schema::table('schedules', function(Blueprint $table)
 		{
-			$table->foreign('discipline_class_id', 'fk_discipline_classes_schedules')->references('id')->on('discipline_classes')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('discipline_class_id', 'fk_schedules_discipline_class_id')->references('id')->on('discipline_classes')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -28,7 +28,7 @@ class AddForeignKeysToSchedulesTable extends Migration {
 	{
 		Schema::table('schedules', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_discipline_classes_schedules');
+			$table->dropForeign('fk_schedules_discipline_class_id');
 		});
 	}
 
