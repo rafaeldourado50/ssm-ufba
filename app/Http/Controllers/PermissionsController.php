@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+
+use App\Permission;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Spatie\Permission\Models\Permission;
 use Illuminate\Http\Request;
 
 class PermissionsController extends Controller
@@ -27,16 +30,23 @@ class PermissionsController extends Controller
    */
   public function index(Request $request)
   {
-    $keyword = $request->get('name');
-    $perPage = 5;
+    $user = Auth::user();
 
-    if (!empty($keyword)) {
-      $permissions = Permission::where('name', 'LIKE', "%$keyword%")->orderBy('name')->paginate($perPage);
+    if ($user->hasPermissionTo('list permissions')) {
+
+      $keyword = $request->get('name');
+      $perPage = 5;
+
+      if (!empty($keyword)) {
+        $permissions = Permission::where('name', 'LIKE', "%$keyword%")->orderBy('name')->paginate($perPage);
+      } else {
+        $permissions = Permission::orderBy('name')->paginate($perPage);
+      }
+
+      return view('permissions.index', compact('permissions'));
     } else {
-      $permissions = Permission::orderBy('name')->paginate($perPage);
+      return view('errors.forbidden');
     }
-
-    return view('permissions.index', compact('permissions'));
   }
 
   /**
@@ -46,7 +56,14 @@ class PermissionsController extends Controller
    */
   public function create()
   {
-    return view('permissions.create');
+    $user = Auth::user();
+
+    if ($user->hasPermissionTo('edit permission')) {
+
+      return view('permissions.create');
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**
@@ -78,9 +95,16 @@ class PermissionsController extends Controller
    */
   public function show($id)
   {
-    $permission = Permission::findOrFail($id);
+    $user = Auth::user();
 
-    return view('permissions.show', compact('permission'));
+    if ($user->hasPermissionTo('list permissions')) {
+
+      $permission = Permission::findOrFail($id);
+
+      return view('permissions.show', compact('permission'));
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**
@@ -92,9 +116,16 @@ class PermissionsController extends Controller
    */
   public function edit($id)
   {
-    $permission = Permission::findOrFail($id);
+    $user = Auth::user();
 
-    return view('permissions.edit', compact('permission'));
+    if ($user->hasPermissionTo('edit permission')) {
+
+      $permission = Permission::findOrFail($id);
+
+      return view('permissions.edit', compact('permission'));
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**

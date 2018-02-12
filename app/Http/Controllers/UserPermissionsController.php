@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Permission;
+use App\User;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-
-use Spatie\Permission\Models\Permission;
 
 class UserPermissionsController extends Controller
 {

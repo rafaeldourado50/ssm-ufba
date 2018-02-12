@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+
 use App\Area;
 use App\Course;
 
@@ -29,16 +31,23 @@ class CoursesController extends Controller
    */
   public function index(Request $request)
   {
-    $keyword = $request->get('name');
-    $perPage = 5;
+    $user = Auth::user();
 
-    if (!empty($keyword)) {
-        $courses = Course::where('name', 'LIKE', "%$keyword%")->orderBy('name')->paginate($perPage);
+    if ($user->hasPermissionTo('list courses')) {
+
+      $keyword = $request->get('name');
+      $perPage = 5;
+
+      if (!empty($keyword)) {
+          $courses = Course::where('name', 'LIKE', "%$keyword%")->orderBy('name')->paginate($perPage);
+      } else {
+          $courses = Course::orderBy('name')->paginate($perPage);
+      }
+
+      return view('courses.index', compact('courses'));
     } else {
-        $courses = Course::orderBy('name')->paginate($perPage);
+      return view('errors.forbidden');
     }
-
-    return view('courses.index', compact('courses'));
   }
 
   /**
@@ -48,9 +57,16 @@ class CoursesController extends Controller
    */
   public function create()
   {
-    $areas = Area::orderBy('name')->pluck('name', 'id');
+    $user = Auth::user();
+
+    if ($user->hasPermissionTo('edit course')) {
+
+      $areas = Area::orderBy('name')->pluck('name', 'id');
     
-    return view('courses.create', compact('areas'));
+      return view('courses.create', compact('areas'));
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**
@@ -83,9 +99,16 @@ class CoursesController extends Controller
    */
   public function show($id)
   {
-    $course = Course::findOrFail($id);
+    $user = Auth::user();
 
-    return view('courses.show', compact('course'));
+    if ($user->hasPermissionTo('list courses')) {
+
+      $course = Course::findOrFail($id);
+
+      return view('courses.show', compact('course'));
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**
@@ -97,11 +120,18 @@ class CoursesController extends Controller
    */
   public function edit($id)
   {
-    $course = Course::findOrFail($id);
-    
-    $areas = Area::orderBy('name')->pluck('name', 'id');
+    $user = Auth::user();
 
-    return view('courses.edit', compact('course', 'areas'));
+    if ($user->hasPermissionTo('edit course')) {
+
+      $course = Course::findOrFail($id);
+    
+      $areas = Area::orderBy('name')->pluck('name', 'id');
+
+      return view('courses.edit', compact('course', 'areas'));
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**

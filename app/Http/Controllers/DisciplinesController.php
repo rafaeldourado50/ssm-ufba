@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+
+use App\Discipline;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Discipline;
 use Illuminate\Http\Request;
 
 class DisciplinesController extends Controller
@@ -27,16 +30,23 @@ class DisciplinesController extends Controller
    */
   public function index(Request $request)
   {
-    $keyword = $request->get('code');
-    $perPage = 5;
+    $user = Auth::user();
 
-    if (!empty($keyword)) {
-        $disciplines = Discipline::where('code', 'LIKE', "%$keyword%")->orderBy('code')->paginate($perPage);
+    if ($user->hasPermissionTo('list disciplines')) {
+
+      $keyword = $request->get('code');
+      $perPage = 5;
+
+      if (!empty($keyword)) {
+          $disciplines = Discipline::where('code', 'LIKE', "%$keyword%")->orderBy('code')->paginate($perPage);
+      } else {
+          $disciplines = Discipline::orderBy('code')->paginate($perPage);
+      }
+
+      return view('disciplines.index', compact('disciplines'));
     } else {
-        $disciplines = Discipline::orderBy('code')->paginate($perPage);
+      return view('errors.forbidden');
     }
-
-    return view('disciplines.index', compact('disciplines'));
   }
 
   /**
@@ -46,7 +56,14 @@ class DisciplinesController extends Controller
    */
   public function create()
   {
-    return view('disciplines.create');
+    $user = Auth::user();
+
+    if ($user->hasPermissionTo('edit discipline')) {
+
+      return view('disciplines.create');
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**
@@ -80,9 +97,16 @@ class DisciplinesController extends Controller
    */
   public function show($id)
   {
-    $discipline = Discipline::findOrFail($id);
+    $user = Auth::user();
 
-    return view('disciplines.show', compact('discipline'));
+    if ($user->hasPermissionTo('list disciplines')) {
+
+      $discipline = Discipline::findOrFail($id);
+
+      return view('disciplines.show', compact('discipline'));
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**
@@ -94,9 +118,16 @@ class DisciplinesController extends Controller
    */
   public function edit($id)
   {
-    $discipline = Discipline::findOrFail($id);
+    $user = Auth::user();
 
-    return view('disciplines.edit', compact('discipline'));
+    if ($user->hasPermissionTo('edit discipline')) {
+
+      $discipline = Discipline::findOrFail($id);
+
+      return view('disciplines.edit', compact('discipline'));
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**

@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+
 use App\User;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 class UsersController extends Controller
 {
@@ -31,16 +30,23 @@ class UsersController extends Controller
    */
   public function index(Request $request)
   {
-    $keyword = $request->get('name');
-    $perPage = 5;
+    $user = Auth::user();
 
-    if (!empty($keyword)) {
-      $users = User::where('name', 'LIKE', "%$keyword%")->orderBy('name')->paginate($perPage);
+    if ($user->hasPermissionTo('list users')) {
+
+      $keyword = $request->get('name');
+      $perPage = 5;
+
+      if (!empty($keyword)) {
+        $users = User::where('name', 'LIKE', "%$keyword%")->orderBy('name')->paginate($perPage);
+      } else {
+        $users = User::orderBy('name')->paginate($perPage);
+      }
+
+      return view('users.index', compact('users'));
     } else {
-      $users = User::orderBy('name')->paginate($perPage);
+      return view('errors.forbidden');
     }
-
-    return view('users.index', compact('users'));
   }
 
   /**
@@ -50,7 +56,14 @@ class UsersController extends Controller
    */
   public function create()
   {
-    return view('users.create');
+    $user = Auth::user();
+
+    if ($user->hasPermissionTo('edit user')) {
+
+      return view('users.create');
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**
@@ -82,9 +95,16 @@ class UsersController extends Controller
    */
   public function show($id)
   {
-    $user = User::findOrFail($id);
+    $user = Auth::user();
 
-    return view('users.show', compact('user'));
+    if ($user->hasPermissionTo('list users')) {
+
+      $user = User::findOrFail($id);
+
+      return view('users.show', compact('user'));
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**
@@ -96,9 +116,16 @@ class UsersController extends Controller
    */
   public function edit($id)
   {
-    $user = User::findOrFail($id);
+    $user = Auth::user();
 
-    return view('users.edit', compact('user'));
+    if ($user->hasPermissionTo('edit user')) {
+
+      $user = User::findOrFail($id);
+
+      return view('users.edit', compact('user'));
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**
