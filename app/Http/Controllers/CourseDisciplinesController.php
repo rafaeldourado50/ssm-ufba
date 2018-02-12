@@ -21,6 +21,7 @@ class CourseDisciplinesController extends Controller
         $disciplines = DB::table('disciplines')
             ->join('course_disciplines', 'disciplines.id', '=', 'course_disciplines.discipline_id')
             ->join('courses', 'course_disciplines.course_id', '=', 'courses.id')
+            ->where('courses.id', '=', $id)
             ->select('disciplines.name','course_disciplines.semester', 'course_disciplines.nature')
             ->get();
       
