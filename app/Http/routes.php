@@ -43,7 +43,7 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('/home', 'HomeController@index');
 
   Route::get('/profile', 'ProfileController@index');
-
+ 
   Route::get('users/{users}/roles', ['as' => 'user_roles.index', 'uses' => 'UserRolesController@index']);
   Route::get('users/{users}/roles/create', ['as' => 'user_roles.create', 'uses' => 'UserRolesController@create']);
   Route::post('users/{users}/roles', ['as' => 'user_roles.store', 'uses' => 'UserRolesController@store']);
@@ -58,4 +58,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('roles/{users}/permissions/create', ['as' => 'role_permissions.create', 'uses' => 'RolePermissionsController@create']);
   Route::post('roles/{users}/permissions', ['as' => 'role_permissions.store', 'uses' => 'RolePermissionsController@store']);
   Route::delete('roles/{users}/permissions/{permissions}', ['as' => 'role_permissions.destroy', 'uses' => 'RolePermissionsController@destroy']);
+  
+  Route::get('courses/{courses}/disciplines', ['as' => 'course_disciplines.index', 'uses' => 'CourseDisciplinesController@index']);
 });

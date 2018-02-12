@@ -28,7 +28,7 @@
                   <th>Name</th>
                   <th>Code</th>
                   <th>Curriculum</th>
-                  <th style="width: 150px !important;">Actions</th>
+                  <th style="width: 165px !important;">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -40,6 +40,7 @@
                   <td>
                     <a href="{{ url('/courses/' . $item->id) }}" title="Show"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> </button></a>
                     <a href="{{ url('/courses/' . $item->id . '/edit') }}" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
+                    <a href="{{ url('/courses/' . $item->id . '/disciplines') }}" title="Disciplinas"><button class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
 
                     <form method="POST" action="{{ url('/courses' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                       {{ method_field('DELETE') }}
