@@ -35,8 +35,8 @@
                     <a href="{{ url('/users/' . $item->id) }}" title="Show"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> </button></a>
                     <a href="{{ url('/users/' . $item->id . '/edit') }}" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
                     
-                    <a href="{{ url('/users/' . $item->id . '/roles') }}" title="User Roles"><button class="btn btn-info btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i> </button></a>
-                    <a href="{{ url('/users/' . $item->id . '/permissions') }}" title="User Permissions"><button class="btn btn-primary btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i> </button></a>
+                    <a href="{{ url('/users/' . $item->id . '/roles') }}" title="User Roles"><button class="btn btn-success btn-sm"><i class="fa fa-cog" aria-hidden="true"></i> </button></a>
+                    <a href="{{ url('/users/' . $item->id . '/permissions') }}" title="User Permissions"><button class="btn btn-success btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i> </button></a>
                   </td>
                 </tr>
               @endforeach

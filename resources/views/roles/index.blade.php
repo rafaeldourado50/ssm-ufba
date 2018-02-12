@@ -43,7 +43,7 @@
                       <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> </button>
                     </form>
                     
-                    <a href="{{ url('/roles/' . $item->id . '/permissions') }}" title="Role Permissions"><button class="btn btn-primary btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i> </button></a>
+                    <a href="{{ url('/roles/' . $item->id . '/permissions') }}" title="Role Permissions"><button class="btn btn-success btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i> </button></a>
                   </td>
                 </tr>
               @endforeach

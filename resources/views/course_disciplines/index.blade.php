@@ -4,21 +4,23 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">Disciplinas por curso</div>
+        <div class="panel-heading">Course Disciplines: {{ $course->name }}</div>
         <div class="panel-body">
          <div class="table-responsive">
             <table class="table table-borderless">
               <thead>
                 <tr>
-                  <th>Nome</th>
-                  <th>Semestre</th>
-                  <th>Natureza</th>
+                  <th>Name</th>
+                  <th>Load</th>
+                  <th>Semester</th>
+                  <th>Nature</th>
                  </tr>
               </thead>
               <tbody>
               @foreach($disciplines as $item)
                 <tr>
                   <td>{{ $item->name }}</td>
+                  <td>{{ $item->load }}</td>
                   <td>{{ $item->semester }}</td>
                   <td>{{ $item->nature }}</td>                       
                 </tr>
