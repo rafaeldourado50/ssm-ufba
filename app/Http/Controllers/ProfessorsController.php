@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+
+use App\Professor;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Professor;
 use Illuminate\Http\Request;
 
 class ProfessorsController extends Controller
@@ -27,16 +30,23 @@ class ProfessorsController extends Controller
    */
   public function index(Request $request)
   {
-    $keyword = $request->get('name');
-    $perPage = 5;
+    $user = Auth::user();
 
-    if (!empty($keyword)) {
-      $professors = Professor::where('name', 'LIKE', "%$keyword%")->orderBy('name')->paginate($perPage);
+    if ($user->hasPermissionTo('list professors')) {
+
+      $keyword = $request->get('name');
+      $perPage = 5;
+
+      if (!empty($keyword)) {
+        $professors = Professor::where('name', 'LIKE', "%$keyword%")->orderBy('name')->paginate($perPage);
+      } else {
+        $professors = Professor::orderBy('name')->paginate($perPage);
+      }
+
+      return view('professors.index', compact('professors'));
     } else {
-      $professors = Professor::orderBy('name')->paginate($perPage);
+      return view('errors.forbidden');
     }
-
-    return view('professors.index', compact('professors'));
   }
 
   /**
@@ -46,7 +56,14 @@ class ProfessorsController extends Controller
    */
   public function create()
   {
-    return view('professors.create');
+    $user = Auth::user();
+
+    if ($user->hasPermissionTo('edit professor')) {
+
+      return view('professors.create');
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**
@@ -78,9 +95,16 @@ class ProfessorsController extends Controller
    */
   public function show($id)
   {
-    $professor = Professor::findOrFail($id);
+    $user = Auth::user();
 
-    return view('professors.show', compact('professor'));
+    if ($user->hasPermissionTo('list professors')) {
+
+      $professor = Professor::findOrFail($id);
+
+      return view('professors.show', compact('professor'));
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**
@@ -92,9 +116,16 @@ class ProfessorsController extends Controller
    */
   public function edit($id)
   {
-    $professor = Professor::findOrFail($id);
+    $user = Auth::user();
 
-    return view('professors.edit', compact('professor'));
+    if ($user->hasPermissionTo('edit professors')) {
+
+      $professor = Professor::findOrFail($id);
+
+      return view('professors.edit', compact('professor'));
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**

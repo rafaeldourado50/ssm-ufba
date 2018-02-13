@@ -28,7 +28,7 @@
                   <th>Name</th>
                   <th>Code</th>
                   <th>Curriculum</th>
-                  <th style="width: 150px !important;">Actions</th>
+                  <th style="width: 165px !important;">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -46,6 +46,8 @@
                       {{ csrf_field() }}
                       <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> </button>
                     </form>
+
+                    <a href="{{ url('/courses/' . $item->id . '/disciplines') }}" title="Course Disciplines"><button class="btn btn-success btn-sm"><i class="fa fa-folder-open" aria-hidden="true"></i> </button></a>
                   </td>
                 </tr>
               @endforeach

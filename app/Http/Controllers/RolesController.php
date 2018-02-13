@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+
+use App\Role;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 
 class RolesController extends Controller
@@ -27,16 +30,23 @@ class RolesController extends Controller
    */
   public function index(Request $request)
   {
-    $keyword = $request->get('name');
-    $perPage = 5;
+    $user = Auth::user();
 
-    if (!empty($keyword)) {
-      $roles = Role::where('name', 'LIKE', "%$keyword%")->orderBy('name')->paginate($perPage);
+    if ($user->hasPermissionTo('list roles')) {
+
+      $keyword = $request->get('name');
+      $perPage = 5;
+
+      if (!empty($keyword)) {
+        $roles = Role::where('name', 'LIKE', "%$keyword%")->orderBy('name')->paginate($perPage);
+      } else {
+        $roles = Role::orderBy('name')->paginate($perPage);
+      }
+
+      return view('roles.index', compact('roles'));
     } else {
-      $roles = Role::orderBy('name')->paginate($perPage);
+      return view('errors.forbidden');
     }
-
-    return view('roles.index', compact('roles'));
   }
 
   /**
@@ -46,7 +56,14 @@ class RolesController extends Controller
    */
   public function create()
   {
-    return view('roles.create');
+    $user = Auth::user();
+
+    if ($user->hasPermissionTo('edit role')) {
+
+      return view('roles.create');
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**
@@ -78,9 +95,16 @@ class RolesController extends Controller
    */
   public function show($id)
   {
-    $role = Role::findOrFail($id);
+    $user = Auth::user();
 
-    return view('roles.show', compact('role'));
+    if ($user->hasPermissionTo('list roles')) {
+
+      $role = Role::findOrFail($id);
+
+      return view('roles.show', compact('role'));
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**
@@ -92,9 +116,16 @@ class RolesController extends Controller
    */
   public function edit($id)
   {
-    $role = Role::findOrFail($id);
+    $user = Auth::user();
 
-    return view('roles.edit', compact('role'));
+    if ($user->hasPermissionTo('edit role')) {
+
+      $role = Role::findOrFail($id);
+
+      return view('roles.edit', compact('role'));
+    } else {
+      return view('errors.forbidden');
+    }
   }
 
   /**

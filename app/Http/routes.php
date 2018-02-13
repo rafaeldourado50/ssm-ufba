@@ -63,6 +63,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('student/{users}/permissions', ['as' => 'role_permissions.index', 'uses' => 'RolePermissionsController@index']);
 
     Route::get('suggestion/make', 'SuggestionController@makeSuggestion');
+
+  Route::get('courses/{courses}/disciplines', ['as' => 'course_disciplines.index', 'uses' => 'CourseDisciplinesController@index']);
 });
 
 
