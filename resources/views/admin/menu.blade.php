@@ -25,3 +25,7 @@
 @if (Auth::user()->hasRole('admin'))
   <li><a href="{{ url('/permissions') }}">Permissions</a></li>
 @endif
+
+{{--@if (Auth::user()->hasRole('editProfile'))--}}
+  <li><a href="{{ url('/records') }}">Meu histórico</a></li>
+{{--@endif--}}

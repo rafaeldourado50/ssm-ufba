@@ -33,6 +33,7 @@ Route::group(['middleware' => ['web']], function () {
   Route::resource('professors', 'ProfessorsController');
   Route::resource('roles', 'RolesController');
   Route::resource('users', 'UsersController');
+  Route::resource('records', 'RecordsController');
 
   Route::get('/', function () {
     return view('welcome');
@@ -58,4 +59,10 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('roles/{users}/permissions/create', ['as' => 'role_permissions.create', 'uses' => 'RolePermissionsController@create']);
   Route::post('roles/{users}/permissions', ['as' => 'role_permissions.store', 'uses' => 'RolePermissionsController@store']);
   Route::delete('roles/{users}/permissions/{permissions}', ['as' => 'role_permissions.destroy', 'uses' => 'RolePermissionsController@destroy']);
+
+    Route::get('student/{users}/permissions', ['as' => 'role_permissions.index', 'uses' => 'RolePermissionsController@index']);
+
+    Route::get('suggestion/make', 'SuggestionController@makeSuggestion');
 });
+
+
