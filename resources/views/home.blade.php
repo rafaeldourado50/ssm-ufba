@@ -9,13 +9,15 @@
           @include('admin.info')
           
           @if (empty(Auth::user()->student))
-            <p>Welcome! Click the link below to complete your registration!</p>
+            <p>Click the link below to complete your registration!</p>
           
             <a href="{{ url('/students/create') }}" class="btn btn-success" style="margin-top: 6px;">
-              <i class="fa fa-plus" aria-hidden="true"></i> New Student
+              <i class="fa fa-graduation-cap" aria-hidden="true"></i> Student Data
             </a>
           @else
-            <p>Done! Now we are ready to start!</p>
+            <p>Now we are ready to start!</p>
+          
+            <!-- Introduzir botão aqui para direcionar à seleção das disciplinas cursadas. -->
           @endif
         </div>
       </div>
