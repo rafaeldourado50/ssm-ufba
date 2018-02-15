@@ -15,7 +15,7 @@
               <label for="select_permission" class="col-md-4 control-label">{{ 'Permission' }}</label>
               <div class="col-md-12">
                 <select id="select_permission" name="select_permission" class="form-control">
-                  <option value="" >--- Select a permission ---</option>
+                  <option value="" >--- Select a Permission ---</option>
                   @foreach ($permissions as $permission => $value)
                     <option value="{{ $permission }}" />{{ $value }}</option>
                   @endforeach

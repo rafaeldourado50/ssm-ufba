@@ -19,6 +19,14 @@
                 <tr>
                   <th class="col-md-2"> Email </th><td class="col-md-10"> {{ $user->email }} </td>
                 </tr>
+                @if (!empty(Auth::user()->student))
+                  <tr>
+                    <th class="col-md-2"> Enrollment </th><td class="col-md-10"> {{ $user->student->enrollment }} </td>
+                  </tr>
+                  <tr>
+                    <th class="col-md-2"> Course </th><td class="col-md-10"> {{ $user->student->course->name }} </td>
+                  </tr>
+                @endif
               </tbody>
             </table>
           </div>

@@ -15,7 +15,7 @@
               <label for="select_role" class="col-md-4 control-label">{{ 'Role' }}</label>
               <div class="col-md-12">
                 <select id="select_role" name="select_role" class="form-control">
-                  <option value="" >--- Select a role ---</option>
+                  <option value="" >--- Select a Role ---</option>
                   @foreach ($roles as $role => $value)
                     <option value="{{ $role }}" />{{ $value }}</option>
                   @endforeach

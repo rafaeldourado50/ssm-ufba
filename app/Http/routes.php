@@ -44,7 +44,7 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('/home', 'HomeController@index');
 
   Route::get('/profile', 'ProfileController@index');
-
+  
   Route::get('users/{users}/roles', ['as' => 'user_roles.index', 'uses' => 'UserRolesController@index']);
   Route::get('users/{users}/roles/create', ['as' => 'user_roles.create', 'uses' => 'UserRolesController@create']);
   Route::post('users/{users}/roles', ['as' => 'user_roles.store', 'uses' => 'UserRolesController@store']);
@@ -60,11 +60,11 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('roles/{users}/permissions', ['as' => 'role_permissions.store', 'uses' => 'RolePermissionsController@store']);
   Route::delete('roles/{users}/permissions/{permissions}', ['as' => 'role_permissions.destroy', 'uses' => 'RolePermissionsController@destroy']);
 
-    Route::get('student/{users}/permissions', ['as' => 'role_permissions.index', 'uses' => 'RolePermissionsController@index']);
-
-    Route::get('suggestion/make', 'SuggestionController@makeSuggestion');
-
   Route::get('courses/{courses}/disciplines', ['as' => 'course_disciplines.index', 'uses' => 'CourseDisciplinesController@index']);
+  
+  Route::get('students/create', ['as' => 'students.create', 'uses' => 'StudentsController@create']);
+  Route::post('students', ['as' => 'students.store', 'uses' => 'StudentsController@store']);
+  
+  Route::get('suggestion/make', 'SuggestionController@makeSuggestion');
+
 });
-
-

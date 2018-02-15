@@ -25,7 +25,7 @@
 <div class="row">
   <label for="area" class="col-md-4 control-label">{{ 'Area' }}</label>
   <div class="col-md-12">
-    {!! Form::select('area_id', $areas, $valueAreaSelected, ['class' => 'form-control', 'placeholder' => 'Choose an area...']) !!}
+    {!! Form::select('area_id', $areas, $valueAreaSelected, ['class' => 'form-control', 'placeholder' => '--- Select an Area ---']) !!}
   </div>
 </div>
 

@@ -76,7 +76,7 @@ class ProfessorsController extends Controller
   public function store(Request $request)
   {
     $this->validate($request, [
-        'name' => 'required',
+      'name' => 'required',
     ]);
     
     $requestData = $request->all();
@@ -139,7 +139,7 @@ class ProfessorsController extends Controller
   public function update(Request $request, $id)
   {
     $this->validate($request, [
-        'name' => 'required',
+      'name' => 'required',
     ]);
     
     $requestData = $request->all();
