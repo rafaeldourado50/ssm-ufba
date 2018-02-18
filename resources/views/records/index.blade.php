@@ -31,14 +31,14 @@
 
             <div class="list-group list-group-root well">
 
-              @foreach($disciplines  as $index => $discipline)
-              <a href="#item-1" class="list-group-item" data-toggle="collapse">
+              @foreach($achieved_disicplines  as $index => $discipline)
+              <a href="#{{$index}}" class="list-group-item" data-toggle="collapse">
                 <i class="glyphicon glyphicon-chevron-right"></i>{{$index}}
               </a>
-              <div class="list-group collapse" id="item-1">
+              <div class="list-group collapse" id="{{$index}}">
                 @foreach($discipline as $item)
                 <a href="#" class="list-group-item">
-                  {{$item}}
+                  {{$item['name']}}
                 </a>
                 @endforeach
                </div>
@@ -55,7 +55,9 @@
         {{ csrf_field() }}
         <div class="col-md-12">
         @foreach($disciplines  as $index => $discipline)
-        {!! Form::select('selected[]', $discipline, null, ['multiple' => true, 'class' => 'selectpicker']) !!}
+          {{$index}}
+        {!! Form::select('selected[]', $discipline, null, ['multiple' => true, 'class' => 'selectpicker',
+        'data-live-search' => true, 'title' => 'Selecionar disciplinas']) !!}
         @endforeach
         </div>
         <div class="pull-left">

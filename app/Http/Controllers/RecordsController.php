@@ -6,6 +6,7 @@ use App\AchievedDiscipline;
 use App\Course;
 use App\Student;
 use Illuminate\Http\Request;
+use DB;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
@@ -30,48 +31,45 @@ class RecordsController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $keyword = $request->get('name');
-        $perPage = 5;
 
         $student = Student::where('user_id', '=', $user['id'])
             ->select('course_id', 'id')
             ->first();
 
-        $disciplines = Course::where('courses.id', '=', $student['course_id'])
+        $data = $this->getDisciplines($student['id'], $student['course_id']);
+        $disciplines = $data['disciplines'];
+        $achieved_disicplines = $data['achieved_disicplines'];
+
+        return view('records.index', compact('disciplines'), compact('achieved_disicplines'));
+    }
+
+    public function getDisciplines($student_id, $course_id){
+
+        $disciplines = Course::where('courses.id', '=', $course_id)
             ->join('course_disciplines as cd', 'cd.course_id', '=', 'courses.id')
             ->join('disciplines as d', 'd.id', '=', 'cd.discipline_id')
             ->select('d.name', 'd.id', 'cd.nature')
             ->get();
 
-        $achieved_disicplines = AchievedDiscipline::where('student_id', '=', $student['id'])
-            ->select('discipline_id')
+        $achieved_disicplines = AchievedDiscipline::where('student_id', '=', $student_id)
+            ->join('disciplines as d', 'd.id', '=', 'achieved_disciplines.discipline_id')
+            ->join('course_disciplines as cd', 'cd.discipline_id', '=', 'd.id')
+            ->where('cd.course_id', '=', $course_id)
+            ->select('d.id', 'd.name', 'cd.nature')
             ->get();
 
-
-//        $disciplines = $disciplines->each(function ($item) use ($achieved_disicplines){
-//           if($achieved_disicplines->contains($item['id'])){
-//               $item['check'] = 1;
-//           } else {
-//               $item['check'] = 0;
-//           }
-//        });
-
-        //$disciplines = $disciplines->keyBy('id');
+        $achieved_disicplines = $achieved_disicplines->groupBy('nature');
+//dd($achieved_disicplines);
         $disciplines = $disciplines->groupBy('nature');
         $disciplines = $disciplines->filter(function (&$item){
             $keys = $item->pluck('id');
             $names = $item->pluck('name');
             return $item = $keys->combine($names);
         });
-//        dd($disciplines);
 
-//        if (!empty($keyword)) {
-//            $permissions = Permission::where('name', 'LIKE', "%$keyword%")->orderBy('name')->paginate($perPage);
-//        } else {
-//            $permissions = Permission::orderBy('name')->paginate($perPage);
-//        }
+        return ['disciplines' => $disciplines,
+            'achieved_disicplines' => $achieved_disicplines];
 
-        return view('records.index', compact('disciplines'));
     }
 
     /**
@@ -84,18 +82,31 @@ class RecordsController extends Controller
      */
     public function store(Request $request)
     {
-        print_r($request->all());die;
-//        $this->validate($request, [
-//            'select_permission' => 'required',
-//        ]);
-//
-//        $permission_id = Input::get('select_permission');
-//
-//        $permission = Permission::findOrFail($permission_id);
-//        $role = Role::findOrFail($role_id);
-//
-//        $role->givePermissionTo($permission);
-//
-//        return redirect('roles/' . $role_id . '/permissions')->with('success', 'Role Permission created successfully!');
-    }
+        $disciplines = $request->input('selected');
+
+        DB::beginTransaction();
+        $user = Auth::user();
+
+        $student = Student::where('user_id', '=', $user['id'])
+            ->select('id', 'course_id')
+            ->first();
+
+        foreach ($disciplines as $discipline){
+            $create = AchievedDiscipline::create(['student_id' => $student['id'],
+                'discipline_id' => $discipline]);
+
+            if (!$create){
+                DB::rollback();
+                return 'error';
+            }
+        }
+
+        DB::commit();
+
+        $data = $this->getDisciplines($student['id'], $student['course_id']);
+        $disciplines = $data['disciplines'];
+        $achieved_disicplines = $data['achieved_disicplines'];
+
+        return view('records.index', compact('disciplines'), compact('achieved_disicplines'));
+       }
 }
