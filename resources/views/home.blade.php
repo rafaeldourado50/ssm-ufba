@@ -18,7 +18,7 @@
             <p>Now we are ready to start!</p>
 
             <a href="{{ url('/records') }}" class="btn btn-success" style="margin-top: 6px;">
-                <i class="fa fa-files-o" aria-hidden="true"></i> Meu histórico
+                <i class="fa fa-files-o" aria-hidden="true"></i> Records
             </a>
           @endif
         </div>

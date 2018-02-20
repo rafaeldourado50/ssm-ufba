@@ -12,6 +12,6 @@
 @endif
 
 @if (Auth::user()->hasRole('student'))
-  <li><a href="{{ url('/records') }}">Meu histórico</a></li>
-  <li><a href="{{ url('/suggestion') }}">Sugestão</a></li>
+  <li><a href="{{ url('/records') }}">Records</a></li>
+  <li><a href="{{ url('/suggestion') }}">Suggestion</a></li>
 @endif
