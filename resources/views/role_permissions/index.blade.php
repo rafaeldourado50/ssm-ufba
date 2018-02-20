@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">Role Permissions: {{ $role->name }}</div>
+        <div class="panel-heading">Role Permissions for {{ $role->name }}</div>
         <div class="panel-body">
 
           @include('admin.info')
