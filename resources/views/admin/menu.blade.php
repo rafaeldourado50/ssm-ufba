@@ -29,3 +29,4 @@
 {{--@if (Auth::user()->hasRole('editProfile'))--}}
   <li><a href="{{ url('/records') }}">Meu histórico</a></li>
 {{--@endif--}}
+<li><a href="{{ url('/suggestion') }}">Sugestão</a></li>

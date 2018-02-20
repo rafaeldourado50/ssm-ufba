@@ -34,6 +34,7 @@ Route::group(['middleware' => ['web']], function () {
   Route::resource('roles', 'RolesController');
   Route::resource('users', 'UsersController');
   Route::resource('records', 'RecordsController');
+  Route::resource('suggestion', 'SuggestionController');
 
   Route::get('/', function () {
     return view('welcome');
