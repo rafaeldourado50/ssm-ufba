@@ -12,13 +12,30 @@ Source: <https://github.com/Xethron/migrations-generator>
 To install:
 
 ```bash
-composer require xethron/migrations-generator --dev
+composer require "xethron/migrations-generator" --dev
 ```
 
 Command for migrations:
 
 ```bash
 php artisan migrate:generate
+```
+
+### Gerador de seeds
+
+Source: <https://github.com/orangehill/iseed>
+
+To install:
+
+```bash
+composer require "orangehill/iseed:2.2" --dev
+```
+
+Command for seeds:
+
+```bash
+php artisan iseed areas,courses,course_class_offers,course_disciplines,disciplines,discipline_classes,discipline_class_offers,pre_requisites,professors,professor_schedules,schedules
+php artisan iseed users,roles,permissions,user_roles,user_permissions,role_permissions
 ```
 
 ### Gerador de models
@@ -28,7 +45,7 @@ Source: <https://github.com/krlove/eloquent-model-generator>
 To install:
 
 ```bash
-composer require krlove/eloquent-model-generator --dev
+composer require "krlove/eloquent-model-generator" --dev
 ```
 
 Commands for model:
@@ -56,7 +73,7 @@ Source: <https://github.com/appzcoder/crud-generator>
 To install:
 
 ```bash
-composer require appzcoder/crud-generator --dev
+composer require "appzcoder/crud-generator" --dev
 ```
 
 Commands for controller:

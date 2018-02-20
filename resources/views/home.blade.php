@@ -16,8 +16,10 @@
             </a>
           @else
             <p>Now we are ready to start!</p>
-          
-            <!-- Introduzir botão aqui para direcionar à seleção das disciplinas cursadas. -->
+
+            <a href="{{ url('/records') }}" class="btn btn-success" style="margin-top: 6px;">
+                <i class="fa fa-files-o" aria-hidden="true"></i> Meu histórico
+            </a>
           @endif
         </div>
       </div>

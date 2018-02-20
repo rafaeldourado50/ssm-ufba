@@ -19,7 +19,8 @@
         "xethron/migrations-generator": "^2.0",
         "krlove/eloquent-model-generator": "^1.2",
         "appzcoder/crud-generator": "^3.0",
-        "laravelcollective/html": "^5.2"
+        "laravelcollective/html": "^5.2",
+        "orangehill/iseed": "2.2"
     },
     "autoload": {
         "classmap": [

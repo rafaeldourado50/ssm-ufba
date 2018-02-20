@@ -163,7 +163,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Spatie\Authorize\AuthorizeServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-
+        Orangehill\Iseed\IseedServiceProvider::class,
     ],
 
     /*
