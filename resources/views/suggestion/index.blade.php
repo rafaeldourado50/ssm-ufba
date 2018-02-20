@@ -22,7 +22,7 @@
 
                 <label for="disciplines_qtd" class="col-md-2 control-label">Quantidade de Disciplinas</label>
                 <div class="col-md-4">
-                    <input class="form-control" name="disciplines_qtd" type="number" id="disciplines_qtd" value="">
+                    <input class="form-control" min="2" placeholder="2" name="disciplines_qtd" type="number" id="disciplines_qtd" value="">
                 </div>
                 <div class="form-group" style="margin-top: 6px;">
                     <div class="pull-left col-md-6">

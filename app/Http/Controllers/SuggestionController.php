@@ -33,6 +33,8 @@ class SuggestionController extends Controller
         DB::beginTransaction();
         $user = Auth::user();
 
+        $disciplines_qtd = $request->input('disciplines_qtd');
+
         $student = Student::where('user_id', '=', $user['id'])
             ->select('course_id', 'id')
             ->first();
@@ -46,7 +48,7 @@ dd($suggestion);
     }
 
 
-    public function makeSuggestion($student_id, $course_id){
+    public function makeSuggestion($student_id, $course_id, $disciplines_qtd = 2){
 
         $achieved_disicplines = AchievedDiscipline::where('student_id', '=', $student_id)
             ->join('disciplines as d', 'd.id', '=', 'achieved_disciplines.discipline_id')
@@ -57,13 +59,21 @@ dd($suggestion);
 
         $disciplinas_oferecidas =  DisciplineClassOffer::join('discipline_classes',
             'discipline_classes.id', '=', 'discipline_class_offers.discipline_class_id')
+            ->join('schedules as s', 's.discipline_class_id', '=', 'discipline_classes.id')
             ->join('disciplines as d', 'd.id', '=', 'discipline_classes.discipline_id')
-            ->join('course_disciplines as cd', 'cd.discipline_id', '=', 'd.id')
-            ->where('cd.course_id', '=', $course_id)
+            ->join('course_class_offers as cco', 'cco.discipline_class_offer_id', '=', 'discipline_class_offers.id')
+           // ->join('course_disciplines as cd', 'cd.discipline_id', '=', 'd.id')
+            ->where('cco.course_id', '=', $course_id)
             ->whereNotIn('d.id', $achieved_disicplines)
             ->distinct()
-            ->select('d.name', 'd.id', 'd.code')
+            ->select('d.name', 'd.id', 'd.code', 's.day', 's.start_hour', 's.start_minute',
+                's.end_hour', 's.end_minute', 's.class_count', 's.id as schedule_id', 's.discipline_class_id')
             ->get();
-        dd($disciplinas_oferecidas);
+
+        $result = [];
+
+//            "s"."start_hour", "s"."start_minute", "s"."end_hour", "s"."end_minute"'))
+
+        dd($disciplinas_oferecidas->groupBy('discipline_class_id'));
     }
 }
