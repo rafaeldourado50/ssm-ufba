@@ -83,7 +83,7 @@ class RolesController extends Controller
 
     Role::create($requestData);
 
-    return redirect('roles')->with('success', 'Role created successfully!');
+    return redirect('roles')->with('success', 'Perfil criado com sucesso!');
   }
 
   /**
@@ -147,7 +147,7 @@ class RolesController extends Controller
     $role = Role::findOrFail($id);
     $role->update($requestData);
 
-    return redirect('roles')->with('success', 'Role updated successfully!');
+    return redirect('roles')->with('success', 'Perfil atualizado com sucesso!');
   }
 
   /**
@@ -161,6 +161,6 @@ class RolesController extends Controller
   {
     Role::destroy($id);
 
-    return redirect('roles')->with('success', 'Role deleted successfully!');
+    return redirect('roles')->with('success', 'Perfil removido com sucesso!');
   }
 }

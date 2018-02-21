@@ -83,7 +83,7 @@ class UsersController extends Controller
 
     User::create($requestData);
 
-    return redirect('users')->with('success', 'User created successfully!');
+    return redirect('users')->with('success', 'Usuário criado com sucesso!');
   }
 
   /**
@@ -147,7 +147,7 @@ class UsersController extends Controller
     $user = User::findOrFail($id);
     $user->update($requestData);
 
-    return redirect('users')->with('success', 'User updated successfully!');
+    return redirect('users')->with('success', 'Usuário atualizado com sucesso!');
   }
 
   /**
@@ -161,6 +161,6 @@ class UsersController extends Controller
   {
     User::destroy($id);
 
-    return redirect('users')->with('success', 'User deleted successfully!');
+    return redirect('users')->with('success', 'Usuário removido com sucesso!');
   }
 }

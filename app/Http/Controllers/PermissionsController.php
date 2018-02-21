@@ -83,7 +83,7 @@ class PermissionsController extends Controller
 
     Permission::create($requestData);
 
-    return redirect('permissions')->with('success', 'Permission created successfully!');
+    return redirect('permissions')->with('success', 'Permissão criada com sucesso!');
   }
 
   /**
@@ -147,7 +147,7 @@ class PermissionsController extends Controller
     $permission = Permission::findOrFail($id);
     $permission->update($requestData);
 
-    return redirect('permissions')->with('success', 'Permission updated successfully!');
+    return redirect('permissions')->with('success', 'Permissão atualizada com sucesso!');
   }
 
   /**
@@ -161,6 +161,6 @@ class PermissionsController extends Controller
   {
     Permission::destroy($id);
 
-    return redirect('permissions')->with('success', 'Permission deleted successfully!');
+    return redirect('permissions')->with('success', 'Permissão removida com sucesso!');
   }
 }
