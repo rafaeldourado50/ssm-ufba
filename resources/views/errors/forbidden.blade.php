@@ -6,7 +6,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">Oops</div>
         <div class="panel-body">
-          Sorry. You do not have the required permission to complete this task. Contact the administrator for the authorization.
+          Você não possui a permissão necessária para completar essa requisição. Entre em contato com o administrador do sistema para autorização.
         </div>
       </div>
     </div>
