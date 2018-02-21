@@ -33,23 +33,9 @@ class RolePermissionsController extends Controller
   public function index($role_id)
   {
     $role = Role::findOrFail($role_id);
-
-    return view('role_permissions.index', compact('role'));
-  }
-
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @param  int  $role_id
-   *
-   * @return \Illuminate\View\View
-   */
-  public function create($role_id)
-  {
-    $role = Role::findOrFail($role_id);
     $permissions = Permission::orderBy('id')->pluck('name', 'id');
-    
-    return view('role_permissions.create', compact('role', 'permissions'));
+
+    return view('role_permissions.index', compact('role', 'permissions'));
   }
 
   /**
@@ -73,7 +59,7 @@ class RolePermissionsController extends Controller
 
     $role->givePermissionTo($permission);
 
-    return redirect('roles/' . $role_id . '/permissions')->with('success', 'Role Permission created successfully!');
+    return redirect('roles/' . $role_id . '/permissions')->with('success', 'Permissão do Perfil criada com sucesso!');
   }
   
   /**
@@ -91,6 +77,6 @@ class RolePermissionsController extends Controller
     
     $role->revokePermissionTo($permission);
 
-    return redirect('roles/' . $role_id . '/permissions')->with('success', 'Role Permission deleted successfully!');
+    return redirect('roles/' . $role_id . '/permissions')->with('success', 'Permissão do Perfil removida com sucesso!');
   }
 }

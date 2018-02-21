@@ -33,23 +33,9 @@ class UserPermissionsController extends Controller
   public function index($user_id)
   {
     $user = User::findOrFail($user_id);
-
-    return view('user_permissions.index', compact('user'));
-  }
-
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @param  int  $user_id
-   *
-   * @return \Illuminate\View\View
-   */
-  public function create($user_id)
-  {
-    $user = User::findOrFail($user_id);
     $permissions = Permission::orderBy('id')->pluck('name', 'id');
-    
-    return view('user_permissions.create', compact('user', 'permissions'));
+
+    return view('user_permissions.index', compact('user', 'permissions'));
   }
 
   /**
@@ -73,7 +59,7 @@ class UserPermissionsController extends Controller
 
     $user->givePermissionTo($permission);
 
-    return redirect('users/' . $user_id . '/permissions')->with('success', 'User Permission created successfully!');
+    return redirect('users/' . $user_id . '/permissions')->with('success', 'Permissão do Usuário criada com sucesso!');
   }
   
   /**
@@ -91,6 +77,6 @@ class UserPermissionsController extends Controller
     
     $user->revokePermissionTo($permission);
 
-    return redirect('users/' . $user_id . '/permissions')->with('success', 'User Permission deleted successfully!');
+    return redirect('users/' . $user_id . '/permissions')->with('success', 'Permissão do Usuário removida com sucesso!');
   }
 }

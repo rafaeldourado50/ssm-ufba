@@ -33,23 +33,9 @@ class UserRolesController extends Controller
   public function index($user_id)
   {
     $user = User::findOrFail($user_id);
-
-    return view('user_roles.index', compact('user'));
-  }
-
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @param  int  $user_id
-   *
-   * @return \Illuminate\View\View
-   */
-  public function create($user_id)
-  {
-    $user = User::findOrFail($user_id);
     $roles = Role::orderBy('name')->pluck('name', 'id');
-    
-    return view('user_roles.create', compact('user', 'roles'));
+
+    return view('user_roles.index', compact('user', 'roles'));
   }
 
   /**
@@ -73,7 +59,7 @@ class UserRolesController extends Controller
 
     $user->assignRole($role);
 
-    return redirect('users/' . $user_id . '/roles')->with('success', 'User Role created successfully!');
+    return redirect('users/' . $user_id . '/roles')->with('success', 'Perfil do Usuário criado com sucesso!');
   }
   
   /**
@@ -91,6 +77,6 @@ class UserRolesController extends Controller
     
     $user->removeRole($role);
 
-    return redirect('users/' . $user_id . '/roles')->with('success', 'User Role deleted successfully!');
+    return redirect('users/' . $user_id . '/roles')->with('success', 'Perfil do Usuário removido com sucesso!');
   }
 }
