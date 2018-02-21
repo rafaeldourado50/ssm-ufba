@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">Welcome</div>
+        <div class="panel-heading">Bem-vindo</div>
         <div class="panel-body">
           <center>
             <h1>Sistema de Sugestão de Matrícula</h1>
