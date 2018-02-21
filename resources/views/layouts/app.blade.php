@@ -57,7 +57,14 @@
         <ul class="nav navbar-nav">
           @if (Auth::check())
             <li><a href="{{ url('/home') }}">Início</a></li>
-            @include('admin.menu')
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                Menu <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                @include('admin.menu')
+              </ul>
+            </li>
           @endif
         </ul>
 
