@@ -19,27 +19,17 @@ class UserRolesTableSeeder extends Seeder
         \DB::table('user_roles')->insert(array (
             0 => 
             array (
-                'role_id' => 1,
+                'role_id' => 3,
                 'user_id' => 1,
             ),
             1 => 
             array (
-                'role_id' => 2,
-                'user_id' => 1,
+                'role_id' => 1,
+                'user_id' => 2,
             ),
             2 => 
             array (
-                'role_id' => 3,
-                'user_id' => 1,
-            ),
-            3 => 
-            array (
                 'role_id' => 2,
-                'user_id' => 2,
-            ),
-            4 => 
-            array (
-                'role_id' => 3,
                 'user_id' => 3,
             ),
         ));

@@ -75,59 +75,59 @@ class PermissionsTableSeeder extends Seeder
             ),
             8 => 
             array (
-                'id' => 9,
-                'name' => 'list students',
-                'created_at' => '2018-02-01 20:22:37',
-                'updated_at' => NULL,
-            ),
-            9 => 
-            array (
-                'id' => 10,
-                'name' => 'edit student',
-                'created_at' => '2018-02-01 20:22:50',
-                'updated_at' => NULL,
-            ),
-            10 => 
-            array (
                 'id' => 11,
                 'name' => 'list permissions',
                 'created_at' => '2018-02-01 20:23:50',
                 'updated_at' => NULL,
             ),
-            11 => 
+            9 => 
             array (
                 'id' => 12,
                 'name' => 'edit permission',
                 'created_at' => '2018-02-01 20:24:50',
                 'updated_at' => NULL,
             ),
-            12 => 
+            10 => 
             array (
                 'id' => 13,
                 'name' => 'list roles',
                 'created_at' => '2018-02-01 20:25:50',
                 'updated_at' => NULL,
             ),
-            13 => 
+            11 => 
             array (
                 'id' => 14,
                 'name' => 'edit role',
                 'created_at' => '2018-02-01 20:26:50',
                 'updated_at' => NULL,
             ),
-            14 => 
+            12 => 
             array (
                 'id' => 15,
                 'name' => 'list users',
                 'created_at' => '2018-02-01 20:27:50',
                 'updated_at' => NULL,
             ),
-            15 => 
+            13 => 
             array (
                 'id' => 16,
                 'name' => 'edit user',
                 'created_at' => '2018-02-01 20:28:50',
                 'updated_at' => NULL,
+            ),
+            14 => 
+            array (
+                'id' => 17,
+                'name' => 'list records',
+                'created_at' => '2018-02-21 04:39:05',
+                'updated_at' => '2018-02-21 04:39:05',
+            ),
+            15 => 
+            array (
+                'id' => 18,
+                'name' => 'show suggestion',
+                'created_at' => '2018-02-21 04:39:15',
+                'updated_at' => '2018-02-21 04:39:15',
             ),
         ));
         
