@@ -26,9 +26,14 @@
 
             <div class="form-group" style="margin-top: 6px;">
               <div class="pull-left">
-                <button class="btn btn-primary" type="submit">
+                <button class="btn btn-success" type="submit">
                   <i class="fa fa-plus" aria-hidden="true"></i> Adicionar
                 </button>
+              </div>
+              <div class="pull-right">
+                <a href="{{ url('/users') }}" class="btn btn-warning">
+                  <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+                </a>
               </div>
             </div>
           </form>
@@ -65,14 +70,6 @@
               @endforeach
               </tbody>
             </table>
-          </div>
-
-          <div class="form-group">
-            <div class="pull-right">
-              <a href="{{ url('/users') }}" class="btn btn-warning">
-                <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
-              </a>
-            </div>
           </div>
 
         </div>

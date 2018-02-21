@@ -26,7 +26,7 @@
 
             <div class="form-group" style="margin-top: 6px;">
               <div class="pull-left">
-                <button class="btn btn-primary" type="submit">
+                <button class="btn btn-success" type="submit">
                   <i class="fa fa-plus" aria-hidden="true"></i> Adicionar
                 </button>
               </div>
