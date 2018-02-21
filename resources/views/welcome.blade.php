@@ -7,19 +7,21 @@
         <div class="panel-heading">Bem-vindo</div>
         <div class="panel-body">
           <center>
-            <h1>Sistema de Sugestão de Matrícula</h1>
-            <h3>Universidade Federal da Bahia</h3>
-            <div class="links">
-              <a href="https://www.moodle.ufba.br/#">Moodle</a>
-              <a href="https://siac.ufba.br/SiacWWW/Welcome.do">SIAC</a>
-              <a href="https://siav.ufba.br/siav/privado/index.faces">SIAV</a>
-              <a href="http://www.agenda.ufba.br/">Agenda</a>
-              <a href="http://meuhorario.dcc.ufba.br/index.php">MeuHorario</a>
-              <a href="https://pt.wikipedia.org/wiki/Universidade_Federal_da_Bahia">Wiki</a>
-            </div>
+            <h1>Sugestão de Matrícula</h1>
+            <h3>Universidade Federal da Bahia - UFBA</h3>
           </center>
         </div>
       </div>
+      <center>
+        <div class="links">
+          <a href="https://www.moodle.ufba.br/#">Moodle</a>
+          <a href="https://siac.ufba.br/SiacWWW/Welcome.do">SIAC</a>
+          <a href="https://siav.ufba.br/siav/privado/index.faces">SIAV</a>
+          <a href="http://www.agenda.ufba.br/">Agenda</a>
+          <a href="http://meuhorario.dcc.ufba.br/index.php">MeuHorario</a>
+          <a href="https://pt.wikipedia.org/wiki/Universidade_Federal_da_Bahia">Wiki</a>
+        </div>
+      </center>
     </div>
   </div>
   <style>

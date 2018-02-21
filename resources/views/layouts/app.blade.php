@@ -57,14 +57,16 @@
         <ul class="nav navbar-nav">
           @if (Auth::check())
             <li><a href="{{ url('/home') }}">Início</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                Menu <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" role="menu">
-                @include('admin.menu')
-              </ul>
-            </li>
+            @if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('professor') || (Auth::user()->hasRole('student') && !empty(Auth::user()->student)))
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                  Menu <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  @include('admin.menu')
+                </ul>
+              </li>
+            @endif
           @endif
         </ul>
 

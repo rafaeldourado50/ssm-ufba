@@ -1,5 +1,5 @@
 @if (Auth::user()->hasPermission('list areas'))
-  <li><a href="{{ url('/areas') }}">Areas</a></li>
+  <li><a href="{{ url('/areas') }}">Áreas</a></li>
 @endif
 @if (Auth::user()->hasPermission('list courses'))
   <li><a href="{{ url('/courses') }}">Cursos</a></li>
