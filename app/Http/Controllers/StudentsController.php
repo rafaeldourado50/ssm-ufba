@@ -62,8 +62,10 @@ class StudentsController extends Controller
 
     $student->save();
 
-    Auth::user()->assignRole('student');
-    
-    return redirect('/home')->with('success', 'Registration completed successfully!');
+    if (!Auth::user()->hasRole('student')) {
+      Auth::user()->assignRole('student');
+    }
+
+    return redirect('/home')->with('success', 'Registro efetuado com sucesso!');
   }
 }
