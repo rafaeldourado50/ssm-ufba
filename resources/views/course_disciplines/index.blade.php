@@ -28,8 +28,13 @@
               </tbody>
             </table>
         </div>
+         <div class="pull-right">
+            <a href="{{ url('/disciplines/pdf') }}" class="btn btn-warning" style="margin-left: 8px;">
+              <i class="fa fa-arrow-down" aria-hidden="true"></i> Back
+            </a>
+          </div>
           <div class="pull-right">
-            <a href="{{ url('/courses') }}" class="btn btn-warning">
+            <a href="{{ url('/courses') }}" class="btn btn-warning" style="margin-left: 8px;">
               <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
             </a>
           </div>

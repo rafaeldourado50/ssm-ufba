@@ -65,4 +65,7 @@ Route::group(['middleware' => ['web']], function () {
   
   Route::get('suggestion/make', 'SuggestionController@makeSuggestion');
 
+  Route::get('courses/{courses}/disciplines/pdf', ['as'=>'course_disciplines.index','uses'=>'CourseDisciplinesController@exportPdf']);
+
+
 });

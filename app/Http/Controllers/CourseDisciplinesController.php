@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class CourseDisciplinesController extends Controller
 {
@@ -27,4 +28,13 @@ class CourseDisciplinesController extends Controller
 
     return view('course_disciplines.index', compact('course', 'disciplines'));
   }
+
+    public function exportPdf(Request $request)
+    {
+        if($request->has('download')){
+            $pdf = PDF::loadView('course_disciplines.index');
+            return $pdf->download('course_disciplines.index');
+        }
+        return view('course_disciplines.index');
+    }
 }
