@@ -23,18 +23,18 @@ class CourseDisciplinesController extends Controller
       ->join('course_disciplines', 'disciplines.id', '=', 'course_disciplines.discipline_id')
       ->join('courses', 'course_disciplines.course_id', '=', 'courses.id')
       ->where('courses.id', '=', $course_id)
-      ->select('disciplines.name', 'disciplines.load', 'course_disciplines.semester', 'course_disciplines.nature')
+      ->select('disciplines.name', 'disciplines.load', 'course_disciplines.semester', 'course_disciplines.nature', 'courses.id')
       ->get();
 
     return view('course_disciplines.index', compact('course', 'disciplines'));
   }
 
     public function exportPdf(Request $request)
-    {
-        if($request->has('download')){
+    {//print_r($request->all());die;
+        //if($request->has('download')){
             $pdf = PDF::loadView('course_disciplines.index');
             return $pdf->download('course_disciplines.index');
-        }
-        return view('course_disciplines.index');
+        //}
+        //return view('course_disciplines.index');
     }
 }

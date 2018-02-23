@@ -29,8 +29,8 @@
             </table>
         </div>
          <div class="pull-right">
-            <a href="{{ url('/disciplines/pdf') }}" class="btn btn-warning" style="margin-left: 8px;">
-              <i class="fa fa-arrow-down" aria-hidden="true"></i> Back
+            <a href="{{ url('/courses/'.$item->id.'/disciplines/pdf') }}" class="btn btn-warning" style="margin-left: 8px;">
+              <i class="fa fa-arrow-down" aria-hidden="true"></i> pdf
             </a>
           </div>
           <div class="pull-right">
