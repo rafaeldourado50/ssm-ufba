@@ -164,7 +164,6 @@ return [
         Spatie\Authorize\AuthorizeServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
-        Thujohn\Pdf\PdfServiceProvider::class,
     ],
 
     /*
@@ -212,7 +211,6 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Collective\Html\FormFacade::class,
         'HTML'      => Collective\Html\HtmlFacade::class,
-        'PDF'       => Thujohn\Pdf\PdfFacade::class,
 
     ],
 
