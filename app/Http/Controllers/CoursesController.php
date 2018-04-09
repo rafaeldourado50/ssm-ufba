@@ -87,7 +87,7 @@ class CoursesController extends Controller
 
     Course::create($requestData);
 
-    return redirect('courses')->with('success', 'Course created successfully!');
+    return redirect('courses')->with('success', 'Curso criado com sucesso!');
   }
 
   /**
@@ -154,7 +154,7 @@ class CoursesController extends Controller
     $course = Course::findOrFail($id);
     $course->update($requestData);
 
-    return redirect('courses')->with('success', 'Course updated successfully!');
+    return redirect('courses')->with('success', 'Curso atualizado com sucesso!');
   }
 
   /**
@@ -168,6 +168,6 @@ class CoursesController extends Controller
   {
     Course::destroy($id);
 
-    return redirect('courses')->with('success', 'Course deleted successfully!');
+    return redirect('courses')->with('success', 'Curso removido com sucesso!');
   }
 }

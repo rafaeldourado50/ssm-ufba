@@ -84,7 +84,7 @@ class AreasController extends Controller
 
     Area::create($requestData);
 
-    return redirect('areas')->with('success', 'Area created successfully!');
+    return redirect('areas')->with('success', 'Área criada com sucesso!');
   }
 
   /**
@@ -150,7 +150,7 @@ class AreasController extends Controller
     $area = Area::findOrFail($id);
     $area->update($requestData);
 
-    return redirect('areas')->with('success', 'Area updated successfully!');
+    return redirect('areas')->with('success', 'Área atualizada com sucesso!');
   }
 
   /**
@@ -164,6 +164,6 @@ class AreasController extends Controller
   {
     Area::destroy($id);
 
-    return redirect('areas')->with('success', 'Area deleted successfully!');
+    return redirect('areas')->with('success', 'Área removida com sucesso!');
   }
 }

@@ -85,7 +85,7 @@ class DisciplinesController extends Controller
 
     Discipline::create($requestData);
 
-    return redirect('disciplines')->with('success', 'Discipline created successfully!');
+    return redirect('disciplines')->with('success', 'Disciplina criada com sucesso!');
   }
 
   /**
@@ -151,7 +151,7 @@ class DisciplinesController extends Controller
     $discipline = Discipline::findOrFail($id);
     $discipline->update($requestData);
 
-    return redirect('disciplines')->with('success', 'Discipline updated successfully!');
+    return redirect('disciplines')->with('success', 'Disciplina atualizada com sucesso!');
   }
 
   /**
@@ -165,6 +165,6 @@ class DisciplinesController extends Controller
   {
     Discipline::destroy($id);
 
-    return redirect('disciplines')->with('success', 'Discipline deleted successfully!');
+    return redirect('disciplines')->with('success', 'Disciplina removida com sucesso!');
   }
 }

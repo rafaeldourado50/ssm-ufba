@@ -83,7 +83,7 @@ class ProfessorsController extends Controller
 
     Professor::create($requestData);
 
-    return redirect('professors')->with('success', 'Professor created successfully!');
+    return redirect('professors')->with('success', 'Professor criado com sucesso!');
   }
 
   /**
@@ -147,7 +147,7 @@ class ProfessorsController extends Controller
     $professor = Professor::findOrFail($id);
     $professor->update($requestData);
 
-    return redirect('professors')->with('success', 'Professor updated successfully!');
+    return redirect('professors')->with('success', 'Professor atualizado com sucesso!');
   }
 
   /**
@@ -161,6 +161,6 @@ class ProfessorsController extends Controller
   {
     Professor::destroy($id);
 
-    return redirect('professors')->with('success', 'Professor deleted successfully!');
+    return redirect('professors')->with('success', 'Professor removido com sucesso!');
   }
 }
