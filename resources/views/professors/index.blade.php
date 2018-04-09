@@ -4,20 +4,20 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">Professors</div>
+        <div class="panel-heading">Professores</div>
         <div class="panel-body">
 
           @include('admin.info')
 
           <form method="GET" action="{{ url('/professors') }}" accept-charset="UTF-8" style="display:inline" role="search">
-            <input type="text" class="form-control" name="name" placeholder="Search by name..." value="{{ request('name') }}">
+            <input type="text" class="form-control" name="name" placeholder="Pesquisar por nome..." value="{{ request('name') }}">
 
             <button type="submit" class="btn btn-success" style="margin-top: 6px;">
-              <i class="fa fa-search" aria-hidden="true"></i> Search
+              <i class="fa fa-search" aria-hidden="true"></i> Pesquisar
             </button>
 
             <a href="{{ url('/professors/create') }}" class="btn btn-success" style="margin-top: 6px;">
-              <i class="fa fa-plus" aria-hidden="true"></i> New
+              <i class="fa fa-plus" aria-hidden="true"></i> Novo
             </a>
           </form>
 
@@ -25,8 +25,8 @@
             <table class="table table-borderless">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th style="width: 150px !important;">Actions</th>
+                  <th>Nome</th>
+                  <th style="width: 150px !important;">Ações</th>
                 </tr>
               </thead>
               <tbody>
@@ -34,13 +34,13 @@
                 <tr>
                   <td>{{ $item->name }}</td>
                   <td>
-                    <a href="{{ url('/professors/' . $item->id) }}" title="Show"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> </button></a>
-                    <a href="{{ url('/professors/' . $item->id . '/edit') }}" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
+                    <a href="{{ url('/professors/' . $item->id) }}" title="Visualizar"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> </button></a>
+                    <a href="{{ url('/professors/' . $item->id . '/edit') }}" title="Editar"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
 
                     <form method="POST" action="{{ url('/professors' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                       {{ method_field('DELETE') }}
                       {{ csrf_field() }}
-                      <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> </button>
+                      <button type="submit" class="btn btn-danger btn-sm" title="Excluir" onclick="return confirm(&quot;Confirma exclusão?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> </button>
                     </form>
                   </td>
                 </tr>

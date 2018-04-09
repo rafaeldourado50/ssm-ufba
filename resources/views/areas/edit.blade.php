@@ -4,14 +4,14 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">Edit Area</div>
+        <div class="panel-heading">Editar Área</div>
         <div class="panel-body">
 
           <form method="POST" action="{{ url('/areas/' . $area->id) }}" accept-charset="UTF-8" enctype="multipart/form-data">
             {{ method_field('PATCH') }}
             {{ csrf_field() }}
 
-            @include ('areas.form', ['submitButtonText' => 'Update'])
+            @include ('areas.form', ['submitButtonText' => 'Atualizar'])
           </form>
 
         </div>
