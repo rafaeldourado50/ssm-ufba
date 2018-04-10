@@ -11,7 +11,7 @@
             
             {{ csrf_field() }}
 
-            @include ('disciplines.form', ['submitButtonText' => 'Persistir'])
+            @include ('disciplines.form')
           </form>
 
         </div>

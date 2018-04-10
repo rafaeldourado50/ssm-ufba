@@ -9,7 +9,7 @@
 <div class="form-group" style="margin-top: 6px;">
   <div class="pull-left">
     <button class="btn btn-success" type="submit">
-      <i class="fa fa-check" aria-hidden="true"></i> {{ $submitButtonText }}
+      <i class="fa fa-check" aria-hidden="true"></i> Salvar
     </button>
   </div>
   <div class="pull-right">

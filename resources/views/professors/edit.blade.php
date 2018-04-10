@@ -11,7 +11,7 @@
             {{ method_field('PATCH') }}
             {{ csrf_field() }}
 
-            @include ('professors.form', ['submitButtonText' => 'Atualizar'])
+            @include ('professors.form')
           </form>
 
         </div>

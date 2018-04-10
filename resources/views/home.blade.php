@@ -8,7 +8,7 @@
         <div class="panel-body">
           @include('admin.info')
 
-          @if (Auth::user()->hasRole('student') && empty(Auth::user()->student))
+          @if (empty(Auth::user()->student))
             <p>Clique no link abaixo para completar seu cadastro!</p>
 
             <a href="{{ url('/students/create') }}" class="btn btn-success" style="margin-top: 6px;">

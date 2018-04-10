@@ -11,7 +11,7 @@
             
             {{ csrf_field() }}
 
-            @include ('courses.form', ['submitButtonText' => 'Persistir', 'valueAreaSelected' => null])
+            @include ('courses.form', ['valueAreaSelected' => null])
           </form>
 
         </div>

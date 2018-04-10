@@ -11,7 +11,7 @@
             {{ method_field('PATCH') }}
             {{ csrf_field() }}
 
-            @include ('courses.form', ['submitButtonText' => 'Atualizar', 'valueAreaSelected' => $course->area_id])
+            @include ('courses.form', ['valueAreaSelected' => $course->area_id])
           </form>
 
         </div>
