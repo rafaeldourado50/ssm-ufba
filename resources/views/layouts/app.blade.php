@@ -74,7 +74,7 @@
         <ul class="nav navbar-nav navbar-right">
           <!-- Authentication Links -->
           @if (Auth::guest())
-            <li><a href="{{ url('/login') }}">Login</a></li>
+            <li><a href="{{ url('/login') }}">Entrar</a></li>
             <li><a href="{{ url('/register') }}">Registrar</a></li>
           @else
             <li class="dropdown">
@@ -84,7 +84,7 @@
 
               <ul class="dropdown-menu" role="menu">
                 <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-cogs"></i>Minha Conta</a></li>
-                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Sair</a></li>
               </ul>
             </li>
           @endif
