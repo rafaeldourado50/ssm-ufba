@@ -35,14 +35,6 @@ class CourseDiscipline extends Model
    */
   public function preRequisites()
   {
-    return $this->hasMany('App\PreRequisite', 'pre_discipline_id');
-  }
-
-  /**
-   * @return \Illuminate\Database\Eloquent\Relations\HasMany
-   */
-  public function preRequisites()
-  {
-    return $this->hasMany('App\PreRequisite', 'post_discipline_id');
+    return $this->hasMany('App\PreRequisite');
   }
 }

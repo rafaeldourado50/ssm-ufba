@@ -14,6 +14,8 @@ class AchievedDiscipline extends Model
    */
   protected $fillable = ['discipline_id', 'student_id'];
 
+  public $timestamps = false;
+
   /**
    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
    */

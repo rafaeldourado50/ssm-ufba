@@ -17,7 +17,7 @@ class PreRequisite extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function courseDiscipline()
+    public function preDiscipline()
     {
         return $this->belongsTo('App\CourseDiscipline', 'pre_discipline_id');
     }
@@ -25,7 +25,7 @@ class PreRequisite extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function courseDiscipline()
+    public function postDiscipline()
     {
         return $this->belongsTo('App\CourseDiscipline', 'post_discipline_id');
     }
